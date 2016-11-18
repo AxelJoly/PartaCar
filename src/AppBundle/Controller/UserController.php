@@ -4,11 +4,12 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
     /**
-     * @Route("/createUser")
+     * @Route("/createUser", name="createUser")
      */
     public function createUserAction()
     {
@@ -18,21 +19,32 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/login", name = "login")
+     * @Route("/home", name = "home")
      */
     public function LoginAction(Request $request){
-        $mail = $request->get('email');
-        $password = $request->get('password');
-        $check = $this->find('mail', $mail);
-        if($check != NULL){
+        $em = $this->getDoctrine()->getManager();
 
-            if($request->isMethod('post')){
+        if($request->isMethod('post')){
+            $mail = $request->get('mail');
+            $password = $request->get('password');
 
-                return $this->redirectToRoute('news_show', array('id' => $news->getId()));
+            $query = $em->createQuery('SELECT mail FROM AppBundle\Entity\User mail WHERE mail.mail = :mail AND mail.password = :password');
+
+            $query->setParameters(array(
+                'mail' => $mail,
+                'password' => $password,
+            ));
+            $check = $query->getResult();
+
+            if($check != NULL){
+
+                $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($mail);
+
+
+                return $this->redirectToRoute('travel', array('pseudo' => $user->getPseudo()));
             }
 
         }
-        return $this->render('AppBundle:Default:show.html.twig', array('news' => $news));
+         return $this->render('AppBundle:Default:index.html.twig', array());
     }
-
 }
