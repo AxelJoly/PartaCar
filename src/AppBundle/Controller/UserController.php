@@ -17,4 +17,22 @@ class UserController extends Controller
         ));
     }
 
+    /**
+     * @Route("/login", name = "login")
+     */
+    public function LoginAction(Request $request){
+        $mail = $request->get('email');
+        $password = $request->get('password');
+        $check = $this->find('mail', $mail);
+        if($check != NULL){
+
+            if($request->isMethod('post')){
+
+                return $this->redirectToRoute('news_show', array('id' => $news->getId()));
+            }
+
+        }
+        return $this->render('AppBundle:Default:show.html.twig', array('news' => $news));
+    }
+
 }
