@@ -29,6 +29,7 @@ class TravelController extends Controller
 
         $travel = $this->getDoctrine()->getRepository('AppBundle:Travel')->findAll();
 
+
         return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel));
     }
 }
