@@ -70,6 +70,13 @@ class Travel
      * @ORM\Column(name="time", type="time", nullable=true)
      */
     private $time;
+    
+    /**
+     * @var \int
+     *
+     * @ORM\Column(name="emptySeat", type="integer")
+     */
+    private $emptySeat;
 
 
     /**
