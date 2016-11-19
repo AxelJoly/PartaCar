@@ -1,47 +1,80 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<nav class="white" role="navigation">
+<nav role="navigation" style="background-color: #26a69a;">
 	<div class="nav-wrapper container">
 
 		<a id="logo-container" href="#" class="brand-logo">Logo</a>
 		<ul class="right hide-on-med-and-down">
-			<li><a href="{{ path('homepage') }}">Accueil</a></li>
+			<li><a href="{{ path('home') }}">Accueil</a></li>
 		</ul>
 
-		<ul id="nav-mobile" class="side-nav">
-			<li><a href="#">Navbar Link</a></li>
-		</ul>
-		<a href="#" data-activates="nav-mobile" class="button-collapse"><i
+
+
+
+
+		<a href="#" data-activates="slide-out" class="btn button-collapse"><i
 			class="material-icons">menu</i></a>
+
+		<ul id="slide-out" class="side-nav">
+			<li><div class="userView">
+					<div class="background">
+						<img src="{{ asset('bundles/framework/images/background1.jpg') }}">
+					</div>
+					<a href="#!user"><img class="circle"
+						src="{{ asset('bundles/framework/images/background1.jpg') }}"></a>
+					<a href="#!name"><span class="white-text name">John Doe</span></a>
+					<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+				</div></li>
+			<li><a href="#!"><i class="material-icons">cloud</i>First
+					Link With Icon</a></li>
+			<li><a href="#!">Second Link</a></li>
+			<li><div class="divider"></div></li>
+			<li><a class="subheader">Subheader</a></li>
+			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+		</ul>
 	</div>
 </nav>
 
-<div id="index-banner" class="parallax-container">
 	<div class="section no-pad-bot">
 		<div class="container">
 			<br> <br>
 			<h1 class="header center teal-text text-lighten-2">PartaCar</h1>
 			<div class="row center">
-				<h5 class="header col s12 light">Bienvenue {{ user.pseudo }}!
-				</h5>
+				<h5 class="header col s12 light">Bienvenue {{ user.pseudo }}!</h5>
 			</div>
+{% for items in travel %}
+		 <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img href="{{ user.profilePic }}" width="80" height="80" class="circle">  <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                {{ items.description }}
+              </span>
+              <a class='btn ButtonDrop' href='*' data-activates='dropdown1'>Drop
+					Me!</a>
 
-			<div class="divider"></div>
-			<div class="section">
-				<div class="container row col s6 offset-s6">
-				<h5>Section 1</h5>
-				<p>Stuff</p>
-				</div>
+				<!-- Dropdown Structure -->
+				<ul id='dropdown1' class='dropdown-content'>
+					<li><a href="#!">one</a></li>
+					<li><a href="#!">two</a></li>
+					<li class="divider"></li>
+					<li><a href="#!">three</a></li>
+				</ul>
 			</div>
-			<div class="divider"></div>
-			<div class="section">
-				<h5>Section 2</h5>
-				<p>Stuff</p>
-			</div>
+              
+            </div>
+          </div>
+        </div>
+
+    {% endfor %}
+      </div>
+				
 
 
 
 		</div>
-	</div>
 	{% endblock %}

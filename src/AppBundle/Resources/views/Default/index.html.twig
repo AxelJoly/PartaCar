@@ -1,7 +1,5 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-	<nav class="white" role="navigation">
+{% extends 'base.html.twig' %} {% block body %}
+	<nav role="navigation" style="background-color:#26a69a;">
 		<div class="nav-wrapper container">
 
 			<a id="logo-container" href="#" class="brand-logo">Logo</a>
@@ -9,24 +7,41 @@
 				<li><a href="*">Trajets</a></li>
 			</ul>
 
-			<ul id="nav-mobile" class="side-nav">
-				<li><a href="#">Navbar Link</a></li>
+
+
+
+
+			<a href="#" data-activates="slide-out" class="btn button-collapse"><i
+						class="material-icons">menu</i></a>
+
+			<ul id="slide-out" class="side-nav">
+				<li><div class="userView">
+						<div class="background">
+							<img src="{{ asset('bundles/framework/images/background1.jpg') }}" >
+						</div>
+						<a href="#!user"><img class="circle" src="{{ asset('bundles/framework/images/background1.jpg') }}"></a>
+						<a href="#!name"><span class="white-text name">John Doe</span></a>
+						<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+					</div></li>
+				<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+				<li><a href="#!">Second Link</a></li>
+				<li><div class="divider"></div></li>
+				<li><a class="subheader">Subheader</a></li>
+				<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
 			</ul>
-			<a href="#" data-activates="nav-mobile" class="button-collapse"><i
-				class="material-icons">menu</i></a>
 		</div>
 	</nav>
-
 	<div id="index-banner" class="parallax-container">
 		<div class="section no-pad-bot">
-			<div class="container">
+			<div class="container transboxTest">
 				<br>
 				<br>
 				<h1 class="header center teal-text text-lighten-2">PartaCar</h1>
 				<div class="row center">
-					<h5 class="header col s12 light">A modern responsive front-end
+					<h5 class="header col s12 light white-text">A modern responsive front-end
 						framework based on Material Design</h5>
 				</div>
+
 				<div class="row center">
 					<div class="row">
 						<form action="" method="post" class="form-horizontal">
@@ -35,22 +50,23 @@
 									<div class="col s12 offset-s4">
 										<div class="input-field col s4">
 											<input id="mail" type="text" class="validate" name="mail">
-											<label for="mail">mail</label>
+											<label for="mail">Mail</label>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col s12 offset-s3">
 										<div class="input-field col s6">
-											<input name="password" id="password" class="validate" >
-											<label for="password">password</label>
+											<input name="password" id="password" class="validate" type="text" >
+											<label for="password">Password</label>
 										</div>
 									</div>
 								</div>
 
-								<div class="center">
-									<button type="submit" class="btn btn-primary pull-right">Save</button>
-								</div>
+								<button class="btn waves-effect waves-light" type="submit"
+										name="action">
+									Save <i class="material-icons right">send</i>
+								</button>
 							</div>
 
 						</form>
@@ -60,11 +76,10 @@
 
 				</div>
 
-
 			</div>
 		</div>
 		<div class="parallax">
-			<img src="background1.jpg" alt="Unsplashed background img 1">
+			<img src="{{ asset('bundles/framework/images/background1.jpg') }}" alt="Unsplashed background img 1" style="display: block;transform: translate3d(-50%, 100px, 0px);"">
 		</div>
 	</div>
 
@@ -126,13 +141,13 @@
 		<div class="section no-pad-bot">
 			<div class="container">
 				<div class="row center">
-					<h5 class="header col s12 light">A modern responsive front-end
+					<h5 class="header col s12 light white-text">A modern responsive front-end
 						framework based on Material Design</h5>
 				</div>
 			</div>
 		</div>
 		<div class="parallax">
-			<img src="background2.jpg" alt="Unsplashed background img 2">
+			<img  src="{{ asset('bundles/framework/images/background2.jpg') }}" alt="Unsplashed background img 2" style="display: block; transform: translate3d(-50%, 7px, 0px);"">
 		</div>
 	</div>
 
@@ -167,13 +182,13 @@
 		<div class="section no-pad-bot">
 			<div class="container">
 				<div class="row center">
-					<h5 class="header col s12 light">A modern responsive front-end
+					<h5 class="header col s12 light white-text">A modern responsive front-end
 						framework based on Material Design</h5>
 				</div>
 			</div>
 		</div>
 		<div class="parallax">
-			<img src="background3.jpg" alt="Unsplashed background img 3">
+			<img  src="{{ asset('bundles/framework/images/background3.jpg') }}" alt="Unsplashed background img 3" style="display: block; transform: translate3d(-50%, 7px, 0px);"">
 		</div>
 	</div>
 
@@ -212,15 +227,10 @@
 		<div class="footer-copyright">
 			<div class="container">
 				Made by <a class="brown-text text-lighten-3"
-					href="http://materializecss.com">Materialize</a>
+						   href="http://materializecss.com">Materialize</a>
 			</div>
 		</div>
 	</footer>
 
 
-	<!--  Scripts-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="js/materialize.js"></script>
-	<script src="js/init.js"></script>   
 {% endblock %}
-

@@ -20,7 +20,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/home", name = "home")
+     * @Route("/", name = "home")
      */
     public function LoginAction(Request $request){
         $em = $this->getDoctrine()->getManager();
