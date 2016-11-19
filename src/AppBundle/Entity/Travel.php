@@ -23,52 +23,32 @@ class Travel
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="driver", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="driver_mail", referencedColumnName="mail")
      */
     private $driver;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="start", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="City")
      */
     private $start;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="end", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="City")
      */
     private $end;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="traveller1", type="string", length=255, nullable=true)
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="travels_users",
+     *      joinColumns={@ORM\JoinColumn(name="travel_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="mail")}
+     *      )
      */
-    private $traveller1;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="traveller2", type="string", length=255, nullable=true)
-     */
-    private $traveller2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="traveller3", type="string", length=255, nullable=true)
-     */
-    private $traveller3;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="traveller4", type="string", length=255, nullable=true)
-     */
-    private $traveller4;
+    private $travellers;
 
     /**
      * @var string
@@ -340,6 +320,10 @@ class Travel
     public function getTime()
     {
         return $this->time;
+    }
+    
+    public function __construct() {
+    	$this->travellers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }
 

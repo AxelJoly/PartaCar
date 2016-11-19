@@ -459,5 +459,9 @@ class User
     {
         return $this->phoneNumber;
     }
+    
+    public function __construct() {
+    	$this->travels = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 }
 
