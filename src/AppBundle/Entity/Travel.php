@@ -23,20 +23,20 @@ class Travel
 
     /**
      * @var string
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="driver_mail", referencedColumnName="mail")
      */
     private $driver;
 
     /**
      * @var string
-     * @ORM\OneToOne(targetEntity="City")
+     * @ORM\ManyToOne(targetEntity="City")
      */
     private $start;
 
     /**
      * @var string
-     * @ORM\OneToOne(targetEntity="City")
+     * @ORM\ManyToOne(targetEntity="City")
      */
     private $end;
 
