@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\User;
 
 class UserController extends Controller
 {
@@ -40,8 +41,7 @@ class UserController extends Controller
 
                 $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($mail);
 
-
-                return $this->redirectToRoute('travel', array('pseudo' => $user->getPseudo()));
+                return $this->redirectToRoute('travel', array('mail' => $user->getMail()));
             }
 
         }

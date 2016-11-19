@@ -17,10 +17,16 @@ use AppBundle\AppBundle;
 class TravelController extends Controller
 {
     /**
-     * @Route("/travel", name="travel")
+     * @Route("/travel/{mail}", name="travel")
      */
-    public function ShowTravelAction()
+    public function ShowTravelAction($mail)
     {
-        return $this->render('AppBundle:Default:travel.html.twig', array());
+        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($mail);
+        if ($user == NULL){
+            return $this->redirectToRoute('home', array());
+        }
+
+
+        return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user));
     }
 }
