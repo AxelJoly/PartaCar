@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <nav role="navigation" style="background-color:#26a69a;">
+        <div class="nav-wrapper container">
+
+            <a id="logo-container" href="#" class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+            </ul>
+           </div>
+    </nav>
+    <h1 class="header center teal-text text-lighten-2">PartaCar</h1>
+    <div class="row center">
+        <h5 class="header col s12 light">Subscribe</h5>
+    </div>
+    <div class="row center">
+        <form action="" method="post" class="form-horizontal ">
+            <div class="container z-depth-5" >
+                <div class="row">
+                    <div class="input-field col s3 offset-s3">
+                        <i class="material-icons prefix">perm_identity</i>
+                        <input id="firstname" type="text" class="validate center-align">
+                        <label for="firstname">First Name</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">perm_identity</i>
+                        <input id="lastname" type="text" class="validate center-align">
+                        <label for="Lastname">Last Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s3 offset-s3">
+                        <i class="material-icons prefix">person_pin</i>
+                        <input id="pseudo" type="text" class="validate center-align">
+                        <label for="pseudo">Pseudo</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">email</i>
+                        <input id="mail" type="text" class="validate center-align">
+                        <label for="mail">Mail</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s3 offset-s3">
+                        <i class="material-icons prefix">lock_outline</i>
+                        <input id="password" type="password" class="validate center-align">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">stay_current_portrait</i>
+                        <input id="phoneNumber" type="text" class="validate center-align">
+                        <label for="phoneNumber">Phone</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="datepicker col s3 offset-s3">
+
+                        <input id="birthday" type="date" class="datepicker validate center-align">
+                    </div>
+                    <div class="input-field col s3">
+                        <select id="school" class="browser-default">
+                            <option value="" disabled selected>School</option>
+                            <option value="1">ISEN Toulon</option>
+                            <option value="2">Ingemedia</option>
+                            <option value="3">Faculte de Droit</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s3 offset-s4">
+                        <i class="material-icons prefix">create</i>
+                        <input id="activity" type="text" lenght="20" class="validate center-align">
+                        <label for="activity">Activity</label>
+                    </div>
+                    <div class="input-field col s3 offset-s4">
+                        <i class="material-icons prefix">content_paste</i>
+                        <textarea id="description" type="text" lenght="100" class="materialize-textarea validate center-align"></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="file-field input-field col s3 offset-s5">
+                        <div class="btn waves-effect waves-light">
+                            <i class="material-icons">assignment_ind</i>
+                            <span>Profile pic</span>
+                            <input id="profilePic" type="file">
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                </br>
+
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <div class="row">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
