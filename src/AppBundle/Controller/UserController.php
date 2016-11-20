@@ -9,14 +9,44 @@ use AppBundle\Entity\User;
 
 class UserController extends Controller
 {
-    /**
-     * @Route("/createUser", name="createUser")
-     */
-    public function createUserAction()
-    {
-        return $this->render('AppBundle:User:create_user.html.twig', array(
 
-        ));
+
+
+
+    /**
+     * @Route("/register", name = "register")
+     */
+    public function createUserAction(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $user = new User();
+            $user->setPhoneNumber($request->get('phoneNumber'));
+            $user->setCarType($request->get('carType'));
+            $user->setNbTravel(0);
+            $user->setMail($request->get('mail'));
+            $user->setPassword($request->get('password'));
+            $user->setLastName($request->get('lastname'));
+            $user->setFirstName($request->get('firstname'));
+            $user->setPseudo($request->get('pseudo'));
+            $datetime=new \DateTime($request->get('birthday'));
+            $user->setBirthday($datetime);
+            $user->setSchool($request->get('school'));
+            $user->setDescription($request->get('description'));
+            $user->setActivity($request->get('activity'));
+            $user->setProfilePic($request->get('profilePic'));
+            $user->setRegisterDate(new \DateTime());
+            if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                return $this->redirectToRoute('homepage');
+            } else
+            {
+                return $this->render('AppBundle:Register:register.html.twig', array());
+            }
+        }
+
+        return $this->render('AppBundle:Register:register.html.twig', array());
     }
 
     /**
