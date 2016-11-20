@@ -32,14 +32,14 @@ class UserController extends Controller
             $user->setBirthday($datetime);
             $user->setSchool($request->get('school'));
             $user->setDescription($request->get('description'));
-            $user->setActivity($request->get('activity'));
+            $user->setActivity(1);
             $user->setProfilePic($request->get('profilePic'));
             $user->setRegisterDate(new \DateTime());
             if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
-                return $this->redirectToRoute('homepage');
+                return $this->redirectToRoute('home');
             } else
             {
                 return $this->render('AppBundle:Register:register.html.twig', array());
