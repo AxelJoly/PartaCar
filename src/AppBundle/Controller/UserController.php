@@ -23,7 +23,8 @@ class UserController extends Controller
             $user->setPhoneNumber($request->get('phoneNumber'));
             $user->setCarType($request->get('carType'));
             $user->setNbTravel(0);
-            $user->setMail($request->get('mail'));
+            $mail=$request->get('mail');
+            $user->setMail($mail);
             $user->setPassword($request->get('password'));
             $user->setLastName($request->get('lastname'));
             $user->setFirstName($request->get('firstname'));
@@ -35,14 +36,26 @@ class UserController extends Controller
             $user->setActivity(1);
             $user->setProfilePic($request->get('profilePic'));
             $user->setRegisterDate(new \DateTime());
+            /** Si les champs obligatoires ne sont pas remplis */
             if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-                return $this->redirectToRoute('home');
+                $query = $em->createQuery('SELECT mail FROM AppBundle\Entity\User mail WHERE mail.mail = :mail');
+                $query->setParameters(array(
+                    'mail' => $mail,
+                ));
+                $check = $query->getResult();
+
+
+                if($check == NULL){ /** si le mail existe pas  */
+                    $em->persist($user);
+                    $em->flush();
+                    return $this->redirectToRoute('home');
+                }
+
             } else
             {
                 return $this->render('AppBundle:Register:register.html.twig', array());
+
             }
         }
 

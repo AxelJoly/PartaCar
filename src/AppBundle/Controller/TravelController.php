@@ -16,6 +16,19 @@ use AppBundle\AppBundle;
 
 class TravelController extends Controller
 {
+
+
+
+
+    /**
+     * @Route("/newTravel", name = "newTravel")
+     */
+    public function createTravelAction(Request $request)
+    {
+        return $this->render('AppBundle:Travel:travel.html.twig', array());
+    }
+
+
     /**
      * @Route("/travel/{mail}", name="travel")
      */
