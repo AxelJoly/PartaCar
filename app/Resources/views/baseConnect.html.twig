@@ -14,9 +14,9 @@
 
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
-	href="{{ asset('bundles/framework/css/materialize.min.css')}}">
+	href="{{ asset('framework/css/materialize.min.css')}}">
 <link rel="stylesheet"
-	href="{{ asset('bundles/framework/css/MonCss.css')}}">
+	href="{{ asset('framework/css/MyCss.css')}}">
 {% endblock %}
 
 
@@ -37,7 +37,7 @@
 				<li><div class="userView">
 						<div class="background">
 							<img
-								src="{{ asset('bundles/framework/images/background1.jpg') }}">
+								src="{{ asset('framework/images/background1.jpg') }}">
 						</div>
 						<a href="#!user"><img class="circle"
 							src="{{ user.profilePic }}"></a>
@@ -63,7 +63,7 @@
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-	<script type="text/javascript" src="{{ asset('navbar.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('framework/js/navbar.js') }}"></script>
 
 	{% endblock %}
 </body>

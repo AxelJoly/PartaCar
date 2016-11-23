@@ -5,8 +5,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-<title>{% block title %}PartaCar!{% endblock %}</title> {% block
-stylesheets %}
+<title>{% block title %}PartaCar!{% endblock %}</title> {% block stylesheets %}
 <!--Import Google Icon Font-->
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -14,9 +13,9 @@ stylesheets %}
 
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
-	href="{{ asset('bundles/framework/css/materialize.min.css')}}">
+	href="{{ asset('framework/css/materialize.min.css')}}">
 <link rel="stylesheet"
-	href="{{ asset('bundles/framework/css/MonCss.css')}}">
+	href="{{ asset('framework/css/MyCss.css')}}">
 {% endblock %}
 
 
@@ -37,10 +36,10 @@ stylesheets %}
 				<li><div class="userView">
 						<div class="background">
 							<img
-								src="{{ asset('bundles/framework/images/background1.jpg') }}">
+								src="{{ asset('framework/images/background1.jpg') }}">
 						</div>
 						<a href="#!user"><img class="circle"
-							src="{{ asset('bundles/framework/images/background1.jpg') }}"></a>
+							src="{{ asset('framework/images/background1.jpg') }}"></a>
 						<a href="#!name"><span class="white-text name">Guest
 								session</span></a> <a href="#!email"><span class="white-text email">test.test@gmail.com</span></a>
 					</div></li>
@@ -57,7 +56,7 @@ stylesheets %}
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-	<script type="text/javascript" src="{{ asset('navbar.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('framework/js/navbar.js') }}"></script>
 
 	{% endblock %}
 </body>

@@ -1,0 +1,27 @@
+@CHARSET "ISO-8859-1";
+
+.navBarPerso{
+	background-color: #26a69a;
+}
+
+.imgTravels{
+	 border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.ButtonDrop {
+	float: right;
+	
+}
+.transboxTest {
+	margin-top: auto;
+	 font-weight: bold;
+    background-color: #ffffff;
+    opacity: 0.5;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.show {
+	display:flex;
+}
