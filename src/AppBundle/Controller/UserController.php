@@ -37,6 +37,7 @@ class UserController extends Controller
             $user->setProfilePic($request->get('profilePic'));
             $user->setRegisterDate(new \DateTime());
             /** Si les champs obligatoires ne sont pas remplis */
+
             if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
                 $em = $this->getDoctrine()->getManager();
                 $query = $em->createQuery('SELECT mail FROM AppBundle\Entity\User mail WHERE mail.mail = :mail');
@@ -65,7 +66,7 @@ class UserController extends Controller
     /**
      * @Route("/", name = "home")
      */
-    public function LoginAction(Request $request){
+    public function loginAction(Request $request){
         $em = $this->getDoctrine()->getManager();
 
         if($request->isMethod('post')){
