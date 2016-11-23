@@ -1,40 +1,9 @@
-{% extends 'base.html.twig' %} {% block body %}
-	<nav role="navigation" style="background-color:#26a69a;">
-		<div class="nav-wrapper container">
-
-			<a id="logo-container" href="#" class="brand-logo">Logo</a>
-			<ul class="right hide-on-med-and-down">
-				<li><a href="{{ path('register') }}">Register</a></li>
-			</ul>
-
-
-
-
-
-			<a href="#" data-activates="slide-out" class="btn button-collapse"><i
-						class="material-icons">menu</i></a>
-
-			<ul id="slide-out" class="side-nav">
-				<li><div class="userView">
-						<div class="background">
-							<img src="{{ asset('bundles/framework/images/background1.jpg') }}" >
-						</div>
-						<a href="#!user"><img class="circle" src="{{ asset('bundles/framework/images/background1.jpg') }}"></a>
-						<a href="#!name"><span class="white-text name">John Doe</span></a>
-						<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-					</div></li>
-				<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-				<li><a href="#!">Second Link</a></li>
-				<li><div class="divider"></div></li>
-				<li><a class="subheader">Subheader</a></li>
-				<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-			</ul>
-		</div>
-	</nav>
+{% extends 'base.html.twig' %} 
+{% block body %}
+	
 	<div id="index-banner" class="parallax-container">
 		<div class="section no-pad-bot">
 			<div class="container transboxTest">
-				<br>
 				<br>
 				<h1 class="header center teal-text text-lighten-2">PartaCar</h1>
 				<div class="row center">
@@ -79,7 +48,7 @@
 			</div>
 		</div>
 		<div class="parallax">
-			<img src="{{ asset('bundles/framework/images/background1.jpg') }}" alt="Unsplashed background img 1" style="display: block;transform: translate3d(-50%, 100px, 0px);"">
+			<img src="{{ asset('bundles/framework/images/background1.jpg') }}" alt="Unsplashed background img 1" style="display: block;transform: translate3d(-50%, 50px, 0px);">
 		</div>
 	</div>
 
@@ -147,7 +116,7 @@
 			</div>
 		</div>
 		<div class="parallax">
-			<img  src="{{ asset('bundles/framework/images/background2.jpg') }}" alt="Unsplashed background img 2" style="display: block; transform: translate3d(-50%, 7px, 0px);"">
+			<img  src="{{ asset('bundles/framework/images/background2.jpg') }}" alt="Unsplashed background img 2" style="display: block; transform: translate3d(-50%, 100px, 0px);">
 		</div>
 	</div>
 
@@ -188,11 +157,11 @@
 			</div>
 		</div>
 		<div class="parallax">
-			<img  src="{{ asset('bundles/framework/images/background3.jpg') }}" alt="Unsplashed background img 3" style="display: block; transform: translate3d(-50%, 7px, 0px);"">
+			<img  src="{{ asset('bundles/framework/images/background3.jpg') }}" alt="Unsplashed background img 3" style="display: flex; transform: translate3d(-50%, 50px, 0px);">
 		</div>
 	</div>
 
-	<footer class="page-footer teal">
+	<footer class="page-footer teal" style="margin-top:0px;">
 		<div class="container">
 			<div class="row">
 				<div class="col l6 s12">

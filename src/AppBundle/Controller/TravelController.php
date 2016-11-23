@@ -18,8 +18,6 @@ class TravelController extends Controller
 {
 
 
-
-
     /**
      * @Route("/newTravel", name = "newTravel")
      */

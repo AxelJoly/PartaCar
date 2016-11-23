@@ -1,40 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseConnect.html.twig' %}
 
 {% block body %}
-<nav role="navigation" style="background-color: #26a69a;">
-	<div class="nav-wrapper container">
 
-		<a id="logo-container" href="#" class="brand-logo">Logo</a>
-		<ul class="right hide-on-med-and-down">
-			<li><a href="{{ path('home') }}">Accueil</a></li>
-		</ul>
-
-
-
-
-
-		<a href="#" data-activates="slide-out" class="btn button-collapse"><i
-			class="material-icons">menu</i></a>
-
-		<ul id="slide-out" class="side-nav">
-			<li><div class="userView">
-					<div class="background">
-						<img src="{{ asset('bundles/framework/images/background1.jpg') }}">
-					</div>
-					<a href="#!user"><img class="circle"
-						src="{{ asset('bundles/framework/images/background1.jpg') }}"></a>
-					<a href="#!name"><span class="white-text name">John Doe</span></a>
-					<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-				</div></li>
-			<li><a href="#!"><i class="material-icons">cloud</i>First
-					Link With Icon</a></li>
-			<li><a href="#!">Second Link</a></li>
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Subheader</a></li>
-			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-		</ul>
-	</div>
-</nav>
 
 	<div class="section no-pad-bot">
 		<div class="container">
@@ -56,8 +23,7 @@
               <span class="black-text">
                 {{ items.description }}
               </span>
-              <a class='btn ButtonDrop' href='*' data-activates='dropdown1'>Drop
-					Me!</a>
+              <a class='btn ButtonDrop' href='*' data-activates='dropdown1'>Sign in!<i class="material-icons right">send</i></a>
 
 				<!-- Dropdown Structure -->
 				<ul id='dropdown1' class='dropdown-content'>

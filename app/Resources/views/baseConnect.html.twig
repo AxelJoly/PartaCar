@@ -5,8 +5,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-<title>{% block title %}PartaCar!{% endblock %}</title> {% block
-stylesheets %}
+<title>{% block title %}PartaCar!{% endblock %}</title>
+{% block stylesheets %}
 <!--Import Google Icon Font-->
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -22,13 +22,13 @@ stylesheets %}
 
 </head>
 <body>
-	<nav role="navigation" style="background-color: #26a69a;">
+		<nav role="navigation" style="background-color: #26a69a;">
 		<div class="nav-wrapper container">
 
 
 			<ul class="right hide-on-med-and-down">
-			<li><a href="{{ path('homepageBalaicouille') }}">Homepage</a></li>
-				<li><a href="{{ path('register') }}">Register</a></li>
+				
+				<li><a href="{{ path('newTravel') }}">Travel</a></li>
 			</ul>
 			<a href="#" data-activates="slide-out" class="btn button-collapse"
 				style="display: flex;"><i class="material-icons">menu</i></a>
@@ -41,18 +41,23 @@ stylesheets %}
 						</div>
 						<a href="#!user"><img class="circle"
 							src="{{ asset('bundles/framework/images/background1.jpg') }}"></a>
-						<a href="#!name"><span class="white-text name">Guest
-								session</span></a> <a href="#!email"><span class="white-text email">test.test@gmail.com</span></a>
+						<a href="#!name"><span class="white-text name">Axewewewewel Joly</span></a> <a href="#!email"><span class="white-text email">axel.joly@gmail.com</span></a>
 					</div></li>
-				<li><a href="https://www.facebook.com/ISEN.Toulon/?fref=ts"><i class="material-icons">thumb_up</i>ISEN-Toulon Facebook</a></li>
-				<li><a href="http://www.isen.fr/campus/toulon/"><i class="material-icons">info</i>ISEN-Toulon website</a></li>
+				<li><a href="#!"><i class="material-icons">library_add</i>Add travel</a></li>
+				<li><a href="#!"><i class="material-icons">navigation</i>My travels</a></li>
+				<li><a href="#!"><i class="material-icons">location_on</i>Search travels</a></li>
+				<li><a href="#!"><i class="material-icons">verified_user</i>My profile</a></li>
 				<li><div class="divider"></div></li>
 				<li><a class="subheader">Subheader</a></li>
-				<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+				<li><a class="waves-effect" href="#!">Disconnect</a></li>
 			</ul>
 		</div>
 	</nav>
-	{% block body %} {% endblock %} {% block javascripts %}
+	{% block body %}
+
+
+	{% endblock %}
+	{% block javascripts %}
 
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
