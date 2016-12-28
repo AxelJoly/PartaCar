@@ -46,7 +46,7 @@ class Travel
      * @ORM\JoinTable(name="travels_users",
      *      joinColumns={@ORM\JoinColumn(name="travel_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="mail")}
-     *      )
+     *           )
      */
     private $travellers;
 
