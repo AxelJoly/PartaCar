@@ -328,9 +328,27 @@ class Travel
     {
         return $this->time;
     }
-    
-    public function __construct() {
-    	$this->travellers = new \Doctrine\Common\Collections\ArrayCollection();
+
+    /**
+     * @return int
+     */
+    public function getEmptySeat()
+    {
+        return $this->emptySeat;
     }
+
+    /**
+     * @param int $emptySeat
+     */
+    public function setEmptySeat($emptySeat)
+    {
+        $this->emptySeat = $emptySeat;
+    }
+
+
+    
+   /* public function __construct() {
+    	$this->travellers = new \Doctrine\Common\Collections\ArrayCollection();
+    }*/
 }
 

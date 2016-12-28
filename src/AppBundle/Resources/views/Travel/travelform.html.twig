@@ -1,4 +1,4 @@
-{% extends "::base.html.twig" %}
+{% extends "baseConnect.html.twig" %}
 
 {% block title %}Create News{% endblock %}
 
@@ -14,7 +14,7 @@
 {% block body %}
 
 
-
+<form action="" method="post">
     <div class="container "><h1 class="test-align center">Formulaire de proposition de trajet</h1></div>
     <div class="container">
             <div class="col s3 row">
@@ -22,7 +22,7 @@
         <div class="col s3" >
 
             <label>Choisissez la date</label>
-            <input type="date" class="datepicker">
+            <input type="date" class="datepicker" id="date">
 
 
         </div>
@@ -98,25 +98,11 @@
     </div>
         <div class="col s9">
 
-        <form action="#nombreplaces">
-            <p>Nombre de places disponibles</p>
-            <p>
-                <input class="with-gap" name="PlacesDispo" type="radio" id="Un"  />
-                <label for="Un">1</label>
-            </p>
-        <p>
-            <input class="with-gap" name="PlacesDispo" type="radio" id="Deux"  />
-            <label for="Deux">2</label>
-        </p>
-        <p>
-            <input class="with-gap" name="PlacesDispo" type="radio" id="Trois"  />
-            <label for="Trois">3</label>
-        </p>
-        <p>
-            <input class="with-gap" name="PlacesDispo" type="radio" id="Quatre"  />
-            <label for="Quatre">4</label>
-        </p>
-    </form>
+
+                <p class="range-field container">
+                    <input type="range" name="emptySeat" id="emptySeat" min="1" max="4" />
+                </p>
+
 
 </div>
     </div>
@@ -130,12 +116,15 @@
                </div>
                <div class="col s6">
                    <label>Ville de départ</label>
-                   <select class="browser-default" id="input-field" name="depart" >
+                   <select class="browser-default" id="start" name="start" >
                        <label>Test rétro</label>
                        <option value="" disabled selected>Choisissez la ville de départ</option>
-                       <option value="1">Ville A</option>
-                       <option value="2">Ville B</option>
-                       <option value="3">Ville C</option>
+                       {% set foo = 0 %}
+                       {% for items in city %}
+
+                           <option value=foo>{{ items.name }}</option>
+                           foo = foo++
+                       {% endfor %}
                    </select>
 
                </div>
@@ -143,12 +132,17 @@
 
                <div class="col s6">
                    <label>Ville d'arrivé</label>
-                   <select class="browser-default" name="arrivee" >
+                   <select class="browser-default" id="end" name="end" >
                        <label>Test rétro</label>
                        <option value="" disabled selected>Choisissez la ville d'arrivée</option>
-                       <option value="1">Ville A</option>
-                       <option value="2">Ville B</option>
-                       <option value="3">Ville C</option>
+                       {% set foo = 0 %}
+                       {% for items in city %}
+
+                       <option value=foo>{{ items.name }}</option>
+                        foo = foo++
+
+                        {% endfor %}
+
                    </select>
 
                </div>
@@ -160,12 +154,17 @@
            <div class="container ">
                <div class="row">
                </div>
-
+               <div class="row">
+                   <div class="input-field col s12">
+                       <textarea id="description" name="description" class="materialize-textarea" length="1000"></textarea>
+                       <label for="description">Textarea</label>
+                   </div>
+               </div>
            <div class="col s6">
     <button type="submit" class="btn btn-primary pull-right">Save</button>
             </div>
        </div>
-
+<form>
 
 
 {% endblock %}

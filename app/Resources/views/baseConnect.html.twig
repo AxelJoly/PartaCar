@@ -28,7 +28,7 @@
 
 			<ul class="right hide-on-med-and-down">
 				
-				<li><a href="{{ path('newTravel') }}">Travel</a></li>
+
 			</ul>
 			<a href="#" data-activates="slide-out" class="btn button-collapse"
 				style="display: flex;"><i class="material-icons">menu</i></a>
@@ -44,7 +44,7 @@
 						<a href="#!name"><span class="white-text name">{{ user.firstName }} {{ user.lastName }}</span></a>
 						<a href="#!email"><span class="white-text email">{{ user.mail }}</span></a>
 					</div></li>
-				<li><a href="#!"><i class="material-icons">library_add</i>Add travel</a></li>
+				<li><a href="{{ path('home')}}newTravelForm/{{ user.mail }}"><i class="material-icons">library_add</i>Add Travel</a></li>
 				<li><a href="#!"><i class="material-icons">navigation</i>My travels</a></li>
 				<li><a href="#!"><i class="material-icons">location_on</i>Search travels</a></li>
 				<li><a href="#!"><i class="material-icons">verified_user</i>My profile</a></li>
@@ -64,6 +64,9 @@
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script type="text/javascript" src="{{ asset('framework/js/navbar.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('framework/js/document.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('framework/js/datepicker.js') }}"></script>
+
 
 	{% endblock %}
 </body>

@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\AppBundle;
+use AppBundle\Entity\Travel;
+
 
 
 class TravelController extends Controller
@@ -19,12 +21,43 @@ class TravelController extends Controller
 
 
     /**
-     * @Route("/newTravel", name = "newTravel")
+     * @Route("/newTravelForm/{mail}", name = "newTravelForm")
      */
-    public function createTravelAction(Request $request)
+    public function createTravelFormAction(Request $request, $mail)
     {
-        return $this->render('AppBundle:Travel:travelform.html.twig', array());
+        $city = $this->getDoctrine()->getRepository('AppBundle:City')->findAll();
+        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($mail);
+       // echo "ca passe 1";
+        if ($user == NULL){
+            return $this->redirectToRoute('home', array());
+
+        }
+
+
+        if ($request->isMethod('post')) {
+            $travel = new Travel();
+            $travel->setDriver($user);
+            $start = $this->getDoctrine()->getRepository('AppBundle:City')->find($request->get('start'));
+            $travel->setStart($start);
+            $end = $this->getDoctrine()->getRepository('AppBundle:City')->find($request->get('end'));
+            $travel->setEnd($end);
+            $travel->setDate(new \DateTime());
+            $travel->setEmptySeat((Integer)($request->get('emptySeat')));
+            $travel->setDescription($request->get('description'));
+
+          // if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($travel);
+            $em->flush();
+            $travel2 = $this->getDoctrine()->getRepository('AppBundle:Travel')->findAll();
+            return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel2));
+            }
+
+
+        return $this->render('AppBundle:Travel:travelform.html.twig', array('user' => $user, 'city' => $city));
     }
+
+
 
 
     /**
@@ -41,6 +74,6 @@ class TravelController extends Controller
         $travel = $this->getDoctrine()->getRepository('AppBundle:Travel')->findAll();
 
 
-        return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel));
+        return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel, 'mail' => $user->getMail()));
     }
 }
