@@ -23,7 +23,7 @@ class TravelController extends Controller
      */
     public function createTravelAction(Request $request)
     {
-        return $this->render('AppBundle:Travel:travel.html.twig', array());
+        return $this->render('AppBundle:Travel:travelform.html.twig', array());
     }
 
 
