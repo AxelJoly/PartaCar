@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,11 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     
-   // private $id;
-
+	/**
+	 * @var string
+	 * @ORM\Id
+	 * @ORM\Column(name="mail", type="string", length=255, unique=true)
+	 */
+	private $mail;
+	
     /**
      * @var \DateTime
      *
@@ -35,13 +41,6 @@ class User
      * @ORM\Column(name="birthday", type="date")
      */
     private $birthday;
-
-    /**
-     * @var string
-     * @ORM\Id
-     * @ORM\Column(name="mail", type="string", length=255, unique=true)
-     */
-    private $mail;
 
     /**
      * @var string
@@ -113,6 +112,12 @@ class User
      */
     private $phoneNumber;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="json_array", nullable=true)
+     */
+    private $roles;
 
     /**
      * Get id
@@ -462,6 +467,44 @@ class User
     
     public function __construct() {
     	$this->travels = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     *
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+    	$this->roles = $roles;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get roles
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+    	return $this->roles;
+    }
+    
+    public function getSalt()
+    {
+    	return null;
+    }
+    
+    public function eraseCredentials()
+    {
+    }
+    
+    public function getUsername()
+    {
+    	return $this->mail;
     }
 }
 

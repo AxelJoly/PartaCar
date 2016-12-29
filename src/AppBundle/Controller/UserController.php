@@ -10,9 +10,6 @@ use AppBundle\Entity\User;
 class UserController extends Controller
 {
 
-
-
-
     /**
      * @Route("/register", name = "register")
      */
@@ -25,7 +22,11 @@ class UserController extends Controller
             $user->setNbTravel(0);
             $mail=$request->get('mail');
             $user->setMail($mail);
-            $user->setPassword($request->get('password'));
+            
+            //HASH du mdp
+            $passwordH = password_hash($request->get('password'), PASSWORD_BCRYPT);
+            $user->setPassword($passwordH);
+            
             $user->setLastName($request->get('lastname'));
             $user->setFirstName($request->get('firstname'));
             $user->setPseudo($request->get('pseudo'));
@@ -36,6 +37,11 @@ class UserController extends Controller
             $user->setActivity(1);
             $user->setProfilePic($request->get('profilePic'));
             $user->setRegisterDate(new \DateTime());
+
+            //Role user quand on s'inscrit
+            $user->setRoles(["ROLE_USER"]);
+            
+            
             /** Si les champs obligatoires ne sont pas remplis */
 
             if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
@@ -62,33 +68,32 @@ class UserController extends Controller
 
         return $this->render('AppBundle:Register:register.html.twig', array());
     }
-
+    
+    
     /**
-     * @Route("/", name = "home")
+     * @Route("/login", name="app.login")
+     * @Route("/", name="home")
      */
-    public function loginAction(Request $request){
-        $em = $this->getDoctrine()->getManager();
-
-        if($request->isMethod('post')){
-            $mail = $request->get('mail');
-            $password = $request->get('password');
-
-            $query = $em->createQuery('SELECT mail FROM AppBundle\Entity\User mail WHERE mail.mail = :mail AND mail.password = :password');
-
-            $query->setParameters(array(
-                'mail' => $mail,
-                'password' => $password,
-            ));
-            $check = $query->getResult();
-
-            if($check != NULL){
-
-                $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($mail);
-
-                return $this->redirectToRoute('travel', array('mail' => $user->getMail()));
-            }
-
-        }
-         return $this->render('AppBundle:Default:index.html.twig', array());
+    public function loginAction()
+    {
+    	$authenticationUtils = $this->get('security.authentication_utils');
+    	 
+    	$error = $authenticationUtils->getLastAuthenticationError();
+    	 
+    	$lastUsername = $authenticationUtils->getLastUsername();
+    	 
+    	return $this->render('AppBundle:Default:index.html.twig', array(
+    			'last_username' => $lastUsername,
+    			'error' => $error
+    	));
     }
+    
+    /**
+     * @Route("/logout", name="app.logout")
+     */
+    public function logoutAction()
+    {
+    }
+    
+ 
 }
