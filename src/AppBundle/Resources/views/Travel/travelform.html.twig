@@ -14,11 +14,13 @@
 {% block body %}
 
 
-<form action="" method="post">
+<!--<form action="" method="post"> -->
     <div class="container "><h1 class="test-align center">Formulaire de proposition de trajet</h1></div>
     <div class="container">
             <div class="col s3 row">
             </div>
+		</div>
+	 <!--
         <div class="col s3" >
 
             <label>Choisissez la date</label>
@@ -119,12 +121,7 @@
                    <select class="browser-default" id="start" name="start" >
                        <label>Test rétro</label>
                        <option value="" disabled selected>Choisissez la ville de départ</option>
-                       {% set foo = 0 %}
-                       {% for items in city %}
 
-                           <option value=foo>{{ items.name }}</option>
-                           foo = foo++
-                       {% endfor %}
                    </select>
 
                </div>
@@ -135,13 +132,12 @@
                    <select class="browser-default" id="end" name="end" >
                        <label>Test rétro</label>
                        <option value="" disabled selected>Choisissez la ville d'arrivée</option>
-                       {% set foo = 0 %}
-                       {% for items in city %}
 
-                       <option value=foo>{{ items.name }}</option>
+
+                       <option value=foo></option>
                         foo = foo++
 
-                        {% endfor %}
+
 
                    </select>
 
@@ -165,6 +161,12 @@
             </div>
        </div>
 <form>
+-->
+	{{ form_start(form, { 'attr': {'class': 'container'}}) }}
 
+					{{ form_widget(form)}}
+
+
+	{{ form_end(form) }}
 
 {% endblock %}

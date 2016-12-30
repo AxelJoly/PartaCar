@@ -20,10 +20,10 @@ class TravelController extends Controller
 {
 
 
-    /**
+ /*   /**
      * @Route("/newTravelForm", name = "newTravelForm")
      */
-    public function createTravelFormAction(Request $request)
+  /*  public function createTravelFormAction(Request $request)
     {
         $city = $this->getDoctrine()->getRepository('AppBundle:City')->findAll();
         if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
@@ -62,7 +62,7 @@ class TravelController extends Controller
     }
 
 
-
+*/
 /*
     /**
      * @Route("/travel/{mail}", name="travel")
