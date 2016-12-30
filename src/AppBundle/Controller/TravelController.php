@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\AppBundle;
 use AppBundle\Entity\Travel;
-
+use AppBundle\Entity\City;
 
 
 class TravelController extends Controller

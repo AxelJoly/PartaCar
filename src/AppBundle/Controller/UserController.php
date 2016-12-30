@@ -9,11 +9,11 @@ use AppBundle\Entity\User;
 
 class UserController extends Controller
 {
-
+/*
     /**
      * @Route("/register", name = "register")
      */
-    public function createUserAction(Request $request)
+ /*   public function createUserAction(Request $request)
     {
         if ($request->isMethod('post')) {
             $user = new User();
@@ -44,7 +44,7 @@ class UserController extends Controller
             
             /** Si les champs obligatoires ne sont pas remplis */
 
-            if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
+        /*    if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
                 $em = $this->getDoctrine()->getManager();
                 $query = $em->createQuery('SELECT mail FROM AppBundle\Entity\User mail WHERE mail.mail = :mail');
                 $query->setParameters(array(
@@ -54,7 +54,7 @@ class UserController extends Controller
 
 
                 if($check == NULL){ /** si le mail existe pas  */
-                    $em->persist($user);
+            /*        $em->persist($user);
                     $em->flush();
                     return $this->redirectToRoute('home');
                 }
@@ -67,7 +67,7 @@ class UserController extends Controller
         }
 
         return $this->render('AppBundle:Register:register.html.twig', array());
-    }
+    }*/
     
     
     /**
@@ -81,6 +81,8 @@ class UserController extends Controller
     	$error = $authenticationUtils->getLastAuthenticationError();
     	 
     	$lastUsername = $authenticationUtils->getLastUsername();
+
+
     	 
     	return $this->render('AppBundle:Default:index.html.twig', array(
     			'last_username' => $lastUsername,

@@ -6,7 +6,7 @@
 <div class="row center">
 	<h5 class="header col s12 light text-center">Subscribe</h5>
 </div>
-<div class="row center">
+<!--<div class="row center">
 	<form action="" method="post" class="form-horizontal ">
 		<div class="container z-depth-5">
 			<div class="row">
@@ -110,12 +110,14 @@
 </div>
 
 </div>
-</div>
-<script>
-	$('.datepicker').pickadate({
-		selectMonths : true, // Creates a dropdown to control month
-		selectYears : 15
-	// Creates a dropdown of 15 years to control year
-	});
-</script>
+</div>-->
+	{{ form_start(form, { 'attr': {'class': 'container'}}) }}
+
+					{{ form_widget(form)}}
+
+
+
+	{{ form_end(form) }}
+
+
 {% endblock %}
