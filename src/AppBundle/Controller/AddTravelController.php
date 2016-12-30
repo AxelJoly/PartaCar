@@ -32,6 +32,8 @@ class AddTravelController extends Controller
 
     public function createTravelFormAction(Request $request)
     {
+
+
         $city = $this->getDoctrine()->getRepository('AppBundle:City')->findAll();
 
 
@@ -74,20 +76,35 @@ class AddTravelController extends Controller
                 'attr' => ['class' => 'browser-default']
             ))
 
+            ->add('start',ChoiceType::class, array(
+                'label' => 'Départ',
+                'choices' => $this->getCities($tests),
+                'choice_label' => function ($value) {return strtoupper($value);},
+                'attr' => ['class' => 'browser-default']
+            ))
+
+            ->add('end',ChoiceType::class, array(
+                'label' => 'Arrivée',
+                'choices' => $this->getCities($tests),
+                'choice_label' => function ($value) {return strtoupper($value);},
+                'attr' => ['class' => 'browser-default']
+            ))
+
+
             ->add('description',TextType::class)
             ->add('valider', SubmitType::class, array('label' => 'Proposer le trajet', 'attr' => ['class' => 'btn waves-effect waves-light']))->getForm();
 
-
+        dump(array_values($tests));
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $travel->setDriver($user);
-            $start = $request->get('start');
-            $end = $request->get('end');
-
-            $travel->setStart($this->getDoctrine()->getRepository('AppBundle:Travel')->find($start));
-            $travel->setEnd($this->getDoctrine()->getRepository('AppBundle:Travel')->find($end));
+            dump($travel);
+            
+            // Ca se passe ici Beeeeeeeen
+           $travel->setStart($this->getDoctrine()->getRepository('AppBundle:Travel')->find($travel->getStart()));
+            $travel->setEnd($this->getDoctrine()->getRepository('AppBundle:Travel')->find($travel->getEnd()));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($travel);
@@ -99,5 +116,14 @@ class AddTravelController extends Controller
         return $this->render('AppBundle:Travel:travelform.html.twig', array('city' => $city, 'user' => $user, 'form' => $form->createView()));
     }
 
+    private function getCities($test){
 
+       for($i = 0; $i < count($test); $i++){
+
+          $tab[] = $test[$i]["name"];
+       }
+
+
+        return $tab;
+    }
 }
