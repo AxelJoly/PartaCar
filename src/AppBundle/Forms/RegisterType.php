@@ -34,7 +34,6 @@ class RegisterType extends AbstractType
             ->add('mail',EmailType::class)
             ->add('password', PasswordType::class)
             ->add('phoneNumber', TextType::class)
-            //->add('birthday', DateType::class,  array('widget' => 'text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'datepicker']))
             ->add('birthday', DateType::class, array(
             		'widget' => 'single_text',
             
@@ -42,21 +41,32 @@ class RegisterType extends AbstractType
             		'html5' => false,
             		'format' => 'yyyy-MM-dd',
             		// add a class that can be selected in JavaScript
-            		'attr' => ['class' => 'datepicker'],
+            		'attr' => ['class' => 'datepicker']
             		))
-            ->add('school', ChoiceType::class, array( 'choices' => array(
-                                                                            'ISEN Toulon' => 'isen',
-                                                                            'Fac de Droit' => 'fac',
-                                                                            'Ingémédia' => 'ingemedia'),
-                'choice_label' => function ($value) {
-
-                        return strtoupper($value);
-                }, 'attr' => ['class' => 'browser-default']
+            ->add('school', ChoiceType::class, array(
+            		'choices' => array(
+                						 'ISEN Toulon' => 'isen',
+                                         'Fac de Droit' => 'fac',
+                                         'Ingémédia' => 'ingemedia'),
+                						'choice_label' => function ($value) {return strtoupper($value);},
+                						'attr' => ['class' => 'browser-default']
             ))
             ->add('carType',TextType::class)
-            ->add('description',TextareaType::class)
-            ->add('profilePic',  FileType::class, array('required' => false, 'label' => 'Photo de profil  '))
-            ->add('save', SubmitType::class, array('attr' => ['class' => 'btn waves-effect waves-light ']));
+            ->add('description',TextareaType::class, array(
+            		'attr' => ['id' => 'textarea' , 'class' => 'materialize-textarea', 'length' => 1000],
+            ))
+            ->add('profilePic',  FileType::class, array(
+            		'required' => false, 'label' => 'Photo de profil  ',
+            		'attr' => ['class' => 'btn waves-effect waves-light ']
+            		
+            ))
+            ->add('profilePic',  TextType::class, array(
+            		'label' => 'URL de la foto de profil (pas d\'idee ? l\'URL facebook fonctione ! :) )'
+            ))
+            ->add('save', SubmitType::class, array(
+            		'attr' => ['class' => 'btn waves-effect waves-light center-align ']
+            		
+            ));
     }
 
 
