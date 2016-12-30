@@ -72,10 +72,11 @@ class UserController extends Controller
     
     /**
      * @Route("/login", name="app.login")
-     * @Route("/", name="home")
+     *
      */
     public function loginAction()
     {
+
     	$authenticationUtils = $this->get('security.authentication_utils');
     	 
     	$error = $authenticationUtils->getLastAuthenticationError();

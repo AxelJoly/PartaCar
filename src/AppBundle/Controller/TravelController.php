@@ -21,13 +21,17 @@ class TravelController extends Controller
 
 
     /**
-     * @Route("/newTravelForm/{mail}", name = "newTravelForm")
+     * @Route("/newTravelForm", name = "newTravelForm")
      */
-    public function createTravelFormAction(Request $request, $mail)
+    public function createTravelFormAction(Request $request)
     {
         $city = $this->getDoctrine()->getRepository('AppBundle:City')->findAll();
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($mail);
-       // echo "ca passe 1";
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        }
+
         if ($user == NULL){
             return $this->redirectToRoute('home', array());
 
@@ -50,7 +54,7 @@ class TravelController extends Controller
             $em->persist($travel);
             $em->flush();
             $travel2 = $this->getDoctrine()->getRepository('AppBundle:Travel')->findAll();
-            return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel2));
+            return $this->redirectToRoute('home', array('user' => $user, 'travel' => $travel2));
             }
 
 
@@ -59,21 +63,30 @@ class TravelController extends Controller
 
 
 
-
+/*
     /**
      * @Route("/travel/{mail}", name="travel")
      */
-    public function ShowTravelAction($mail)
+
+    /**
+     * @Route("/", name="home")
+     */
+    public function ShowTravelAction()
     {
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($mail);
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        }
+      /*  $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($mail);
         if ($user == NULL){
             return $this->redirectToRoute('home', array());
-        }
+        }*/
 
 
         $travel = $this->getDoctrine()->getRepository('AppBundle:Travel')->findAll();
 
 
-        return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel, 'mail' => $user->getMail()));
+        return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel));
     }
 }
