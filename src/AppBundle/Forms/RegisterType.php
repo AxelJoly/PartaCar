@@ -34,7 +34,16 @@ class RegisterType extends AbstractType
             ->add('mail',EmailType::class)
             ->add('password', PasswordType::class)
             ->add('phoneNumber', TextType::class)
-            ->add('birthday', DateType::class,  array('widget' => 'text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => '']))
+            //->add('birthday', DateType::class,  array('widget' => 'text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'datepicker']))
+            ->add('birthday', DateType::class, array(
+            		'widget' => 'single_text',
+            
+            		// do not render as type="date", to avoid HTML5 date pickers
+            		'html5' => false,
+            		'format' => 'yyyy-MM-dd',
+            		// add a class that can be selected in JavaScript
+            		'attr' => ['class' => 'datepicker'],
+            		))
             ->add('school', ChoiceType::class, array( 'choices' => array(
                                                                             'ISEN Toulon' => 'isen',
                                                                             'Fac de Droit' => 'fac',
