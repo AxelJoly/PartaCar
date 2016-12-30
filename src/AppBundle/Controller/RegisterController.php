@@ -32,7 +32,12 @@ class RegisterController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //$user->setPassword(password_hash($request->get('password'), PASSWORD_BCRYPT));
+        	//HASH du password
+        	$plainPassword = $user->getPassword();
+        	$encoder = $this->container->get('security.password_encoder');
+        	$encoded = $encoder->encodePassword($user, $plainPassword);
+        	
+        	$user->setPassword($encoded);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
