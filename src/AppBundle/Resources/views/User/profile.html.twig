@@ -1,0 +1,148 @@
+{% extends 'baseConnect.html.twig' %}
+{% block body %}
+
+<h1 class="header center teal-text text-lighten-2">PartaCar</h1>
+<div class="row center">
+	<h5 class="header col s12 light">
+		Bonjour
+		{{ user.pseudo }}
+	</h5>
+</div>
+
+<div class="row center">
+
+	<div class="container z-depth-5">
+		<ul class="collection">
+
+			<div class="row">
+
+				<div class="container">
+					<img src="{{ user.profilePic }}"
+						class="image" style="width: 100%">
+					<div class="middle">
+						<div class="text">
+							Avatar of
+							{{ user.firstName }}
+							{{ user.lastName }}
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+
+				<div class="input-field col s3 offset-s2">
+
+
+					<li class="collection-item dismissable"><div>
+							{{ user.firstName }}
+							<a href="#!" class="secondary-content" title="First Name"><i
+								class="material-icons prefix">perm_identity</i></a>
+						</div></li>
+
+
+
+				</div>
+				<div class="input-field col s3 offset-s1">
+
+					<li class="collection-item dismissable"><div>
+							{{ user.lastName }}
+							<a href="#!" class="secondary-content" title="Last Name"><i
+								class="material-icons prefix">perm_identity</i></a>
+						</div></li>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s3 offset-s2">
+					<li class="collection-item dismissable"><div>
+							{{ user.pseudo }}
+							<a href="#!" class="secondary-content" title="Nickname"> <i
+								class="material-icons prefix">person_pin</i></a>
+						</div></li>
+
+				</div>
+				<div class="input-field col s3 offset-s1">
+					<li class="collection-item dismissable"><div>
+							{{ user.mail }}
+							<a href="#!" class="secondary-content" title="E-Mail"> <i
+								class="material-icons prefix">email</i></a>
+						</div></li>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s3 offset-s2">
+					<li class="collection-item dismissable"><div>
+							{{ user.phoneNumber }}
+							<a href="#!" class="secondary-content" title="Phone Number">
+								<i class="material-icons prefix">stay_current_portrait</i>
+							</a>
+						</div></li>
+
+				</div>
+				<div class="input-field col s3 offset-s1">
+					<li class="collection-item dismissable"><div>
+							{{ user.school }}
+							<a href="#!" class="secondary-content" title="School"> <i
+								class="material-icons prefix">stars</i></a>
+						</div></li>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3 offset-s2">
+					<li class="collection-item dismissable"><div>
+							{{ user.birthdayProfile }}
+							<a href="#!" class="secondary-content" title="Birthday date">
+								<i class="material-icons prefix">today</i>
+							</a>
+						</div></li>
+
+				</div>
+				<div class="input-field col s3 offset-s1">
+					<li class="collection-item dismissable"><div>
+							{{ user.registerDateProfile }}
+							<a href="#!" class="secondary-content" title="Register Date"> <i
+								class="material-icons prefix">query_builder</i></a>
+						</div></li>
+
+				</div>
+			</div>
+
+
+
+
+			<div class="row">
+				<div class="input-field col s4 offset-s4">
+					<li class="collection-item dismissable"><div>
+							<a href="#!" class="secondary-content " title="Car Type"> <i
+								class="material-icons prefix">directions_car</i></a>
+							{{ user.carType }}
+
+						</div></li>
+				</div>
+				<div class="input-field col s4 offset-s4">
+					<li class="collection-item dismissable"><div>
+							<a href="#!" class="secondary-content"
+								title="Description of the car"> <i
+								class="material-icons prefix">description</i></a>
+							{{ user.description }}
+
+						</div></li>
+				</div>
+			</div>
+
+		</ul>
+
+
+	</div>
+
+</div>
+
+
+
+
+{% endblock %}

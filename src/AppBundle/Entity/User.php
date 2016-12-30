@@ -146,11 +146,23 @@ class User implements UserInterface
     /**
      * Get registerDate
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getRegisterDate()
     {
+    	
         return $this->registerDate;
+    }
+    
+    /**
+     * Get registerDate
+     *
+     * @return string
+     */
+    public function getRegisterDateProfile()
+    {
+    	 
+    	return $this->registerDate->format('d-m-Y');
     }
 
     /**
@@ -200,6 +212,17 @@ class User implements UserInterface
     {
         return $this->birthday;
     }
+    
+    /**
+     * Get birthday
+     *
+     * @return string
+     */
+    public function getBirthdayProfile()
+    {
+    	return $this->birthday->format('d-m-Y');
+    }
+    
 
     /**
      * Set mail

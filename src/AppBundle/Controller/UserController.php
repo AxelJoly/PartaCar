@@ -98,5 +98,26 @@ class UserController extends Controller
     {
     }
     
- 
+    
+    /**
+     * @Route("/profile", name="profile")
+     *
+     */
+    
+    public function profileAction()
+    {   if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        }
+        return $this->render('AppBundle:User:profile.html.twig', array('user' => $user));
+    }
 }
+    	
+ 
+    
+    
+    
+    
+ 
+
