@@ -100,10 +100,13 @@ class AddTravelController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $travel->setDriver($user);
-            dump($travel);
-            
+            dump($travel->getStart());
             // Ca se passe ici Beeeeeeeen
+            
+            //find ne marche pas il faut écrire findName() !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
            $travel->setStart($this->getDoctrine()->getRepository('AppBundle:Travel')->find($travel->getStart()));
+            dump($travel->getStart());
+           
             $travel->setEnd($this->getDoctrine()->getRepository('AppBundle:Travel')->find($travel->getEnd()));
 
             $em = $this->getDoctrine()->getManager();
