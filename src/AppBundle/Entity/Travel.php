@@ -31,14 +31,12 @@ class Travel
     /**
      * @var string
      * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="start_id", referencedColumnName="name")
      */
     private $start;
 
     /**
      * @var string
      * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="end_id", referencedColumnName="name")
      */
     private $end;
 
