@@ -89,4 +89,25 @@ class TravelController extends Controller
 
         return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel));
     }
+
+    /**
+     * @Route("/travel/{id}", name="travelDetail")
+     */
+    public function ShowTravelDetail(Request $request, $id)
+    {
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        }
+        $id = $request->get('id');
+        //  $request = Request::createFromGlobals();
+        //  $id=$request->query->get('id');
+        $travel=$this->getDoctrine()->getRepository('AppBundle:Travel')->find($id);
+        // $travellers = $this->getDoctrine()->getRepository('AppBundle:Travel')->findBy(1);
+
+
+
+
+        return $this->render('AppBundle:Travel:traveldetail.html.twig', array('user' => $user, 'travel' => $travel, /*'travellers'=>$travellers*/));
+    }
 }

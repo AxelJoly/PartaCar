@@ -1,0 +1,29 @@
+{% extends 'baseConnect.html.twig' %}
+
+{% block body %}
+
+ <div class="container row">
+ id={{ travel.id }}
+</div><div class= "container row">
+ mail driver= {{ travel.driver.mail }}
+</div><div class= "container row">
+ ville début= {{ travel.start.name}}
+</div><div class="container row">
+ville fin= {{ travel.end.name}}
+</div>
+<div class="container row">
+
+</div>
+<div class="container row">
+description= {{ travel.description }}
+</div><div class="container row">
+date= {{ travel.date |date("d/m/Y") }}
+</div><div class="container row">
+ heure= {{ travel.time |date("H:i:s")}}
+</div><div class="container row">
+ nombre de places libres= {{ travel.emptySeat }}
+</div>
+
+
+
+{% endblock %}

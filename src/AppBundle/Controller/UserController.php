@@ -110,7 +110,42 @@ class UserController extends Controller
             $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         }
-        return $this->render('AppBundle:User:profile.html.twig', array('user' => $user));
+        return $this->render('AppBundle:User:profile.html.twig', array('user' => $user, 'profile' => $user));
+    }
+
+    /**
+     * @Route("/profile/{pseudo}", name="foreignProfile")
+     *
+     */
+
+    public function ForeignProfileAction($pseudo)
+    {
+        if ($this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery('SELECT userz FROM AppBundle\Entity\User userz WHERE userz.pseudo = :pseudo');
+        $query->setParameters(array(
+            'pseudo' => $pseudo,
+        ));
+        $check = $query->getResult();
+        dump($check);
+
+        if ($check == NULL) {
+            /** si le mail existe pas  */
+
+            return $this->redirectToRoute('home');
+
+
+        } else {
+
+
+            return $this->render('AppBundle:User:profile.html.twig', array('user' => $user, 'profile' => $check));
+        }
+
+
     }
 }
     	

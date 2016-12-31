@@ -16,14 +16,15 @@
           <div class="row valign-wrapper">
             <div class="col s2">
 
-                    <img border="0" alt="W3Schools" src="{{ items.driver.profilePic }}" width="70" height="70" class="circle">
+                <a href='{{ path('profile') }}/{{ items.driver.pseudo }}'> <img border="0" alt="W3Schools"  src="{{ items.driver.profilePic }}" width="70" height="70" class="circle">
                 <!-- notice the "circle" class -->
+                  </a>
             </div>
             <div class="col s10">
               <span class="black-text">
                 {{ items.description }}
               </span>
-              <a class='btn ButtonDrop' href='#'>C'est parti! <i class="material-icons">directions_car</i></a>
+                <a class='btn ButtonDrop' href='/travel/{{ items.id }}' data-activates='dropdown1'>C'est parti! <i class="material-icons">directions_car</i></a>
 
 			
 			</div>

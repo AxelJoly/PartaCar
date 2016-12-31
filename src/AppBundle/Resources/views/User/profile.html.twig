@@ -5,7 +5,9 @@
 <div class="row center">
 	<h5 class="header col s12 light">
 		Bonjour
-		{{ user.pseudo }}
+
+		{{ profile.pseudo }}
+
 	</h5>
 </div>
 
@@ -17,7 +19,7 @@
 			<div class="row">
 
 				<div class="container containerImg">
-					<img src="{{ user.profilePic }}"
+					<img src="{{ profile.profilePic }}"
 						class="image" style="width: 100%">
 					
 				</div>
@@ -30,7 +32,7 @@
 
 
 					<li class="collection-item dismissable"><div>
-							{{ user.firstName }}
+							{{ profile.firstName }}
 							<a href="#!" class="secondary-content" title="First Name"><i
 								class="material-icons prefix">perm_identity</i></a>
 						</div></li>
@@ -41,7 +43,7 @@
 				<div class="input-field col s3 offset-s1">
 
 					<li class="collection-item dismissable"><div>
-							{{ user.lastName }}
+							{{ profile.lastName }}
 							<a href="#!" class="secondary-content" title="Last Name"><i
 								class="material-icons prefix">perm_identity</i></a>
 						</div></li>
@@ -51,7 +53,7 @@
 			<div class="row">
 				<div class="input-field col s3 offset-s2">
 					<li class="collection-item dismissable"><div>
-							{{ user.pseudo }}
+							{{ profile.pseudo }}
 							<a href="#!" class="secondary-content" title="Nickname"> <i
 								class="material-icons prefix">person_pin</i></a>
 						</div></li>
@@ -59,7 +61,7 @@
 				</div>
 				<div class="input-field col s3 offset-s1">
 					<li class="collection-item dismissable"><div>
-							{{ user.mail }}
+							{{ profile.mail }}
 							<a href="#!" class="secondary-content" title="E-Mail"> <i
 								class="material-icons prefix">email</i></a>
 						</div></li>
@@ -70,7 +72,7 @@
 			<div class="row">
 				<div class="input-field col s3 offset-s2">
 					<li class="collection-item dismissable"><div>
-							{{ user.phoneNumber }}
+							{{ profile.phoneNumber }}
 							<a href="#!" class="secondary-content" title="Phone Number">
 								<i class="material-icons prefix">stay_current_portrait</i>
 							</a>
@@ -79,7 +81,7 @@
 				</div>
 				<div class="input-field col s3 offset-s1">
 					<li class="collection-item dismissable"><div>
-							{{ user.school }}
+							{{ profile.school }}
 							<a href="#!" class="secondary-content" title="School"> <i
 								class="material-icons prefix">stars</i></a>
 						</div></li>
@@ -89,7 +91,7 @@
 			<div class="row">
 				<div class="input-field col s3 offset-s2">
 					<li class="collection-item dismissable"><div>
-							{{ user.birthdayProfile }}
+							{{ profile.birthdayProfile }}
 							<a href="#!" class="secondary-content" title="Birthday date">
 								<i class="material-icons prefix">today</i>
 							</a>
@@ -98,7 +100,7 @@
 				</div>
 				<div class="input-field col s3 offset-s1">
 					<li class="collection-item dismissable"><div>
-							{{ user.registerDateProfile }}
+							{{ profile.registerDateProfile }}
 							<a href="#!" class="secondary-content" title="Register Date"> <i
 								class="material-icons prefix">query_builder</i></a>
 						</div></li>
@@ -114,7 +116,7 @@
 					<li class="collection-item dismissable"><div>
 							<a href="#!" class="secondary-content " title="Car Type"> <i
 								class="material-icons prefix">directions_car</i></a>
-							{{ user.carType }}
+							{{ profile.carType }}
 
 						</div></li>
 				</div>
@@ -123,7 +125,7 @@
 							<a href="#!" class="secondary-content"
 								title="Description of the car"> <i
 								class="material-icons prefix">description</i></a>
-							{{ user.description }}
+							{{ profile.description }}
 
 						</div></li>
 				</div>
