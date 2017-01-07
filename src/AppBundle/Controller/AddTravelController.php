@@ -23,6 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AddTravelController extends Controller
 {
@@ -76,17 +77,15 @@ class AddTravelController extends Controller
                 'attr' => ['class' => 'browser-default']
             ))
 
-            ->add('start',ChoiceType::class, array(
-                'label' => 'Départ',
-                'choices' => $this->getCities($tests),
-                'choice_label' => function ($value) {return strtoupper($value);},
+            ->add('start', EntityType::class, array(
+                'class' => 'AppBundle:City',
+                'choice_label' => 'name',
                 'attr' => ['class' => 'browser-default']
             ))
 
-            ->add('end',ChoiceType::class, array(
-                'label' => 'Arrivée',
-                'choices' => $this->getCities($tests),
-                'choice_label' => function ($value) {return strtoupper($value);},
+            ->add('end', EntityType::class, array(
+                'class' => 'AppBundle:City',
+                'choice_label' => 'name',
                 'attr' => ['class' => 'browser-default']
             ))
 
@@ -100,11 +99,11 @@ class AddTravelController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $travel->setDriver($user);
-            dump($travel);
+           // dump($travel);
             
             // Ca se passe ici Beeeeeeeen
-           $travel->setStart($this->getDoctrine()->getRepository('AppBundle:Travel')->find($travel->getStart()));
-            $travel->setEnd($this->getDoctrine()->getRepository('AppBundle:Travel')->find($travel->getEnd()));
+          // $travel->setStart($this->getDoctrine()->getRepository('AppBundle:Travel')->find($travel->getStart()));
+           // $travel->setEnd($this->getDoctrine()->getRepository('AppBundle:Travel')->find($travel->getEnd()));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($travel);
