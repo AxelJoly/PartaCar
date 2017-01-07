@@ -114,11 +114,11 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/profile/{pseudo}", name="foreignProfile")
+     * @Route("/profile/{mail}", name="foreignProfile")
      *
      */
 
-    public function ForeignProfileAction($pseudo)
+    public function ForeignProfileAction($mail)
     {
         if ($this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             $user = $this->container->get('security.token_storage')->getToken()->getUser();
@@ -126,9 +126,9 @@ class UserController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT userz FROM AppBundle\Entity\User userz WHERE userz.pseudo = :pseudo');
+        $query = $em->createQuery('SELECT userz FROM AppBundle\Entity\User userz WHERE userz.mail = :mail');
         $query->setParameters(array(
-            'pseudo' => $pseudo,
+            'mail' => $mail,
         ));
         $check = $query->getResult();
         dump($check);
@@ -140,7 +140,6 @@ class UserController extends Controller
 
 
         } else {
-
 
             return $this->render('AppBundle:User:profile.html.twig', array('user' => $user, 'profile' => $check));
         }

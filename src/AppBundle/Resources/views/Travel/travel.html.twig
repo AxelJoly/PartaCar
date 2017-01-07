@@ -16,7 +16,7 @@
           <div class="row valign-wrapper">
             <div class="col s2">
 
-                <a href='{{ path('profile') }}/{{ items.driver.pseudo }}'> <img border="0" alt="W3Schools"  src="{{ items.driver.profilePic }}" width="70" height="70" class="circle">
+                <a href="{{ path('profile', {'mail': items.driver.mail}) }}"> <img border="0" alt="W3Schools"  src="{{ items.driver.profilePic }}" width="70" height="70" class="circle">
                 <!-- notice the "circle" class -->
                   </a>
             </div>
