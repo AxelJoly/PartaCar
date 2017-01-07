@@ -132,7 +132,7 @@ class UserController extends Controller
         ));
         $check = $query->getResult();
         dump($check);
-
+        dump($user);
         if ($check == NULL) {
             /** si le mail existe pas  */
 
@@ -141,7 +141,11 @@ class UserController extends Controller
 
         } else {
 
-            return $this->render('AppBundle:User:profile.html.twig', array('user' => $user, 'profile' => $check));
+            return $this->render('AppBundle:User:profile.html.twig', array(
+            		'user' => $user,
+            		'profile' => $check['0'],
+            		
+            ));
         }
 
 
