@@ -5,17 +5,16 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-<title>{% block title %}PartaCar!{% endblock %}</title> {% block stylesheets %}
+<title>{% block title %}PartaCar!{% endblock %}</title>
+
 <!--Import Google Icon Font-->
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-
-
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
 	href="{{ asset('framework/css/materialize.min.css')}}">
-<link rel="stylesheet"
-	href="{{ asset('framework/css/MyCss.css')}}">
+<link rel="stylesheet" href="{{ asset('framework/css/MyCss.css')}}">
+{% block stylesheets %}
 {% endblock %}
 
 
@@ -23,44 +22,52 @@
 <body>
 	<nav role="navigation" style="background-color: #26a69a;">
 		<div class="nav-wrapper container">
-
-
 			<ul class="right hide-on-med-and-down">
 				<li><a href="{{ path('home') }}">Homepage</a></li>
-				<li><a href="{{ path('register') }}">Register</a></li>
 			</ul>
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			{% else %}
+			<ul class="right hide-on-med-and-down">
+				<li><a href="{{ path('register') }}">Sign up</a></li>
+			</ul>
+			{%  endif %}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			<a href="#" data-activates="slide-out" class="btn button-collapse"
 				style="display: flex;"><i class="material-icons">menu</i></a>
-
 			<ul id="slide-out" class="side-nav">
-				<li><div class="userView">
-						<div class="background">
-							<img
-								src="{{ asset('framework/images/background1.jpg') }}">
-						</div>
-						<a href="#!user"><img class="circle"
-							src="{{ asset('framework/images/background1.jpg') }}"></a>
-						<a href="#!name"><span class="white-text name">Guest
-								session</span></a> <a href="#!email"><span class="white-text email">test.test@gmail.com</span></a>
-					</div></li>
-				<li><a href="https://www.facebook.com/ISEN.Toulon/?fref=ts"><i class="material-icons">thumb_up</i>ISEN-Toulon Facebook</a></li>
-				<li><a href="http://www.isen.fr/campus/toulon/"><i class="material-icons">info</i>ISEN-Toulon website</a></li>
+				<div class="userView">
+					<div class="background">
+						<img src="{{ asset('framework/images/background1.jpg') }}">
+					</div>
+					<img class="circle" src="{{ user.profilePic }}"> <span
+						class="white-text name">{{ user.firstName }} {{ user.lastName }}</span>
+					<span class="white-text email">{{ user.mail }}</span>
+				</div>
+				<li><a href="{{ path('newTravelForm')}}"><i
+						class="material-icons">library_add</i>Add Travel</a></li>
+				<li><a href="#!"><i class="material-icons">navigation</i>My
+						travels</a></li>
+				<li><a href="#!"><i class="material-icons">location_on</i>Search
+						travels</a></li>
+				<li><a href="{{ path('profile_show', {'mail': user.mail}) }}"><i
+						class="material-icons">verified_user</i>My profile</a></li>
 				<li><div class="divider"></div></li>
-				<li><a class="subheader">Subheader</a></li>
-				<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+				<li><a class="waves-effect" href="{{ path('app.logout') }}">Disconnect</a></li>
 			</ul>
+			{% endif %}
 		</div>
 	</nav>
-	{% block body %} {% endblock %} {% block javascripts %}
-
+	{% block body %}
+	{% endblock %}
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-	<script type="text/javascript" src="{{ asset('framework/js/navbar.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('framework/js/datepicker.js') }}"></script>
-
-
-
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+	<script type="text/javascript"
+		src="{{ asset('framework/js/navbar.js') }}"></script>
+	<script type="text/javascript"
+		src="{{ asset('framework/js/datepicker.js') }}"></script>
+	{% block javascripts %}
 	{% endblock %}
 </body>
 </html>

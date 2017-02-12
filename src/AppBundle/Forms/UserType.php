@@ -22,7 +22,7 @@ use Symfony\Component\Form\AbstractType;
 use AppBundle\Entity\User;
 
 
-class RegisterType extends AbstractType
+class UserType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options){

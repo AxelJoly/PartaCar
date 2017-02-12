@@ -6,150 +6,70 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
+use AppBundle\Forms\UserType;
 
-class UserController extends Controller
-{
-/*
-    /**
-     * @Route("/register", name = "register")
-     */
- /*   public function createUserAction(Request $request)
-    {
-        if ($request->isMethod('post')) {
-            $user = new User();
-            $user->setPhoneNumber($request->get('phoneNumber'));
-            $user->setCarType($request->get('carType'));
-            $user->setNbTravel(0);
-            $mail=$request->get('mail');
-            $user->setMail($mail);
-            
-            //HASH du mdp
-            $passwordH = password_hash($request->get('password'), PASSWORD_BCRYPT);
-            $user->setPassword($passwordH);
-            
-            $user->setLastName($request->get('lastname'));
-            $user->setFirstName($request->get('firstname'));
-            $user->setPseudo($request->get('pseudo'));
-            $datetime=new \DateTime($request->get('birthday'));
-            $user->setBirthday($datetime);
-            $user->setSchool($request->get('school'));
-            $user->setDescription($request->get('description'));
-            $user->setActivity(1);
-            $user->setProfilePic($request->get('profilePic'));
-            $user->setRegisterDate(new \DateTime());
-
-            //Role user quand on s'inscrit
-            $user->setRoles(["ROLE_USER"]);
-            
-            
-            /** Si les champs obligatoires ne sont pas remplis */
-
-        /*    if ($user->getMail() && $user->getPassword() && $user->getFirstName() && $user->getLastName() && $user->getBirthday() && $user->getSchool() && $user->getPseudo() && $user->getPhoneNumber() != NULL) {
-                $em = $this->getDoctrine()->getManager();
-                $query = $em->createQuery('SELECT mail FROM AppBundle\Entity\User mail WHERE mail.mail = :mail');
-                $query->setParameters(array(
-                    'mail' => $mail,
-                ));
-                $check = $query->getResult();
-
-
-                if($check == NULL){ /** si le mail existe pas  */
-            /*        $em->persist($user);
-                    $em->flush();
-                    return $this->redirectToRoute('home');
-                }
-
-            } else
-            {
-                return $this->render('AppBundle:Register:register.html.twig', array());
-
-            }
-        }
-
-        return $this->render('AppBundle:Register:register.html.twig', array());
-    }*/
-    
-    
-    /**
-     * @Route("/login", name="app.login")
-     *
-     */
-    public function loginAction()
-    {
-
-    	$authenticationUtils = $this->get('security.authentication_utils');
-    	 
-    	$error = $authenticationUtils->getLastAuthenticationError();
-    	 
-    	$lastUsername = $authenticationUtils->getLastUsername();
-
-
-    	 
-    	return $this->render('AppBundle:Default:index.html.twig', array(
-    			'last_username' => $lastUsername,
-    			'error' => $error
-    	));
-    }
-    
-    /**
-     * @Route("/logout", name="app.logout")
-     */
-    public function logoutAction()
-    {
-    }
-    
-    
-    /**
-     * @Route("/profile", name="profile")
-     *
-     */
-    
-    public function profileAction()
-    {   if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
-        {
-            $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
-        }
-        return $this->render('AppBundle:User:profile.html.twig', array('user' => $user, 'profile' => $user));
-    }
-
-    /**
-     * @Route("/profile/{mail}", name="foreignProfile")
-     *
-     */
-
-    public function ForeignProfileAction($mail)
-    {
-        if ($this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
-        }
-
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT userz FROM AppBundle\Entity\User userz WHERE userz.mail = :mail');
-        $query->setParameters(array(
-            'mail' => $mail,
-        ));
-        $check = $query->getResult();
-        dump($check);
-        dump($user);
-        if ($check == NULL) {
-            /** si le mail existe pas  */
-
-            return $this->redirectToRoute('home');
-
-
-        } else {
-
-            return $this->render('AppBundle:User:profile.html.twig', array(
-            		'user' => $user,
-            		'profile' => $check['0'],
-            		
-            ));
-        }
-
-
-    }
+class UserController extends Controller {
+	/**
+	 * @Route("/register", name="register")
+	 */
+	public function registerAction(Request $request) {
+		$user = new User ();
+		$user->setRegisterDate ( new \DateTime () );
+		$user->setNbTravel ( 0 );
+		$user->setActivity ( 1 );
+		$user->setRoles ( [ 
+				"ROLE_USER" 
+		] );
+		$form = $this->createForm ( UserType::class, $user );
+		
+		$form->handleRequest ( $request );
+		
+		if ($form->isSubmitted () && $form->isValid ()) {
+			
+			// HASH du password
+			$plainPassword = $user->getPassword ();
+			$encoder = $this->container->get ( 'security.password_encoder' );
+			$encoded = $encoder->encodePassword ( $user, $plainPassword );
+			
+			$user->setPassword ( $encoded );
+			
+			$em = $this->getDoctrine ()->getManager ();
+			$em->persist ( $user );
+			$em->flush ();
+			
+			return $this->redirectToRoute ( 'home' );
+		}
+		
+		return $this->render ( 'AppBundle:User:register.html.twig', array (
+				'form' => $form->createView () 
+		) );
+	}
+	
+	/**
+	 * @Route("/profile/{mail}", name="profile_show")
+	 */
+	public function ShowProfileAction($mail) {
+		if ($this->container->get ( 'security.authorization_checker' )->isGranted ( 'IS_AUTHENTICATED_FULLY' )) {
+			$user = $this->container->get ( 'security.token_storage' )->getToken ()->getUser ();
+		}
+		
+		$em = $this->getDoctrine ()->getManager ();
+		$query = $em->createQuery ( 'SELECT userz FROM AppBundle\Entity\User userz WHERE userz.mail = :mail' );
+		$query->setParameters ( array (
+				'mail' => $mail 
+		) );
+		$check = $query->getResult ();
+		
+		if ($check == NULL) {
+			return $this->redirectToRoute ( 'home' );
+		} else {
+			
+			return $this->render ( 'AppBundle:User:profile.html.twig', array (
+					'user' => $user,
+					'profile' => $check ['0'] 
+			) );
+		}
+	}
 }
     	
  
