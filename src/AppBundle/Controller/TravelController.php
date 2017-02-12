@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\AppBundle;
 use AppBundle\Entity\Travel;
 use AppBundle\Entity\City;
+use AppBundle\Forms\TravelType;
 
 
 class TravelController extends Controller
@@ -27,17 +28,20 @@ class TravelController extends Controller
         if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
         {
             $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
         }
         $travel = $this->getDoctrine()->getRepository('AppBundle:Travel')->findAll();
 
 
-        return $this->render('AppBundle:Travel:travel.html.twig', array('user' => $user, 'travel' => $travel));
+        return $this->render('AppBundle:Travel:travel.html.twig', array(
+        		'user' => $user,
+        		'travel' => $travel
+        ));
     }
 
     /**
      * @Route("/travel/{id}", name="travelDetail")
      */
+    /*
     public function ShowTravelDetail(Request $request, $id)
     {
         if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
@@ -50,13 +54,45 @@ class TravelController extends Controller
         $travel=$this->getDoctrine()->getRepository('AppBundle:Travel')->find($id);
         // $travellers = $this->getDoctrine()->getRepository('AppBundle:Travel')->findBy(1);
 
-        return $this->render('AppBundle:Travel:traveldetail.html.twig', array('user' => $user, 'travel' => $travel, /*'travellers'=>$travellers*/));
+        return $this->render('AppBundle:Travel:traveldetail.html.twig', array('user' => $user, 'travel' => $travel,));
+    }
+    */
+    
+    /**
+     * @Route("/travel/add", name="travel_add")
+     */
+    public function addAction(Request $request)
+    {
+    	if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+    	{
+    		$user = $this->container->get('security.token_storage')->getToken()->getUser();
+    	}
+    	
+    	$travel = new Travel();
+    
+    	$form = $this->createForm(TravelType::class,$travel);
+    	$form->handleRequest($request);
+    
+    	if ($form->isSubmitted() && $form->isValid()) {
+    
+    		$travel->setDriver($user);
+    		
+    		$em = $this->getDoctrine()->getManager();
+    		$em->persist($travel);
+    		$em->flush();
+    
+    		return $this->redirectToRoute('home');
+    	}
+    	return $this->render('AppBundle:Travel:add.html.twig', array(
+    			'form' => $form->createView(),
+    			'user' => $user,
+    	));
     }
     
     /**
      * @Route("/newTravelForm", name = "newTravelForm")
      */
-    
+    /*
     public function createTravelFormAction(Request $request)
     {
     
@@ -150,7 +186,7 @@ class TravelController extends Controller
     
     
     	return $tab;
-    }
+    }*/
 }
 
 

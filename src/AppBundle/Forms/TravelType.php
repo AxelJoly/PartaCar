@@ -20,10 +20,11 @@ use AppBundle\Entity\City;
 use Symfony\Component\Form\AbstractType;
 use AppBundle\Entity\Travel;
 use Doctrine\ORM\EntityManager;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 
-class addTravelType extends AbstractType
+class TravelType extends AbstractType
 {
 
 
@@ -54,13 +55,9 @@ class addTravelType extends AbstractType
                 },
                 'attr' => ['class' => 'browser-default']
             ))
-        -> add("start", "choice",
-            array("label" => "Type",
-                "choices" => $this->fillBusinessUnit(),
-                "attr" => array("class" => "form-control select2"),
-                "empty_value" => 'All Business Units'))
-            ->add('description', TextType::class)
-            ->add('valider', SubmitType::class, array('label' => 'Proposer le trajet', 'attr' => ['class' => 'btn waves-effect waves-light']));
+            ->add('description', TextType::class, array(
+            		
+            ));
 
     }
 
