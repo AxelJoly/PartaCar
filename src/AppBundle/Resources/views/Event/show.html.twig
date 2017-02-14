@@ -26,6 +26,7 @@
 		<br>
 		<br>
 		{% endif %}
+
 		{% for item in event %}
 		<div class="col s12 m8 offset-m2 l6 offset-l3">
 			<div class="card-panel grey lighten-5 z-depth-1">
@@ -46,9 +47,18 @@
 						{{ item.responsableEvent.firstName }}
 						{{ item.responsableEvent.lastName }}
 					</div>
+					<div class="container">
+					{% if (is_granted('ROLE_BDE') or is_granted('ROLE_BDS')) %}
+						<div>
+							<a class='btn blue ButtonDrop '
+							   href="{{ path('event_modify' , {'type': typeEvent, 'id': item.id})}}"
+							   data-activates='dropdown1'>Modifier</a>
+						</div>
+
+					{% endif %}
 					<a class='btn ButtonDrop' href="{{ path('travel_show' , {'event_id': item.id})}}"
-						data-activates='dropdown1'>C'est parti! <i
-						class="material-icons">star</i></a>
+						data-activates='dropdown1'>Participer</a>
+				</div>
 				</div>
 			</div>
 		</div>

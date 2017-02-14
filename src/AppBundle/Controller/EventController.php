@@ -42,6 +42,36 @@ class EventController extends Controller {
 				'eventType' => $type
 		) );
 	}
+
+    /**
+     * @Route("/event/modify/{type}/{id}", name="event_modify")
+     * @Security("has_role('ROLE_BDE','ROLE_BDS')")
+     */
+    public function modifyEventAction(Request $request, $type, $id)
+    {
+        if ($this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        }
+        $event = $this->getDoctrine ()->getRepository ( 'AppBundle:Event' )->find($id);
+
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($event);
+            $em->flush();
+
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('AppBundle:Event:modify.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+            'eventType' => $type
+        ));
+    }
 	
 	/**
 	 * @Route("/", name="home")
