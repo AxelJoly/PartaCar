@@ -8,19 +8,38 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\AppBundle;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use AppBundle\Entity\Event;
+use AppBundle\Forms\EventType;
 
 class EventController extends Controller {
 	/**
 	 * @Route("/event/add/{type}", name="event_add")
 	 * @Security("has_role('ROLE_BDE','ROLE_BDS')")
 	 */
-	public function addAction($type) {
+	public function addAction(Request $request, $type) {
 		if ($this->container->get ( 'security.authorization_checker' )->isGranted ( 'IS_AUTHENTICATED_FULLY' )) {
 			$user = $this->container->get ( 'security.token_storage' )->getToken ()->getUser ();
 		}
+		$event = new Event();
+		$event->setType($type);
+		$event->setResponsableEvent($user);
+		
+		$form = $this->createForm ( EventType::class, $event );
+		$form->handleRequest ($request );
+		
+		if ($form->isSubmitted () && $form->isValid ()) {
+			
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($event);
+			$em->flush();
+				
+			return $this->redirectToRoute ('home');
+		}
 		
 		return $this->render ( 'AppBundle:Event:add.html.twig', array (
-				'user' => $user 
+				'user' => $user,
+				'form' => $form->createView (),
+				'eventType' => $type
 		) );
 	}
 	

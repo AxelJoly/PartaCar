@@ -1,7 +1,23 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Event:add{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Event:add page</h1>
+
+<h1 class="header center teal-text text-lighten-1">PartaCar</h1>
+<div class="row center">
+	<h5 class="header col s12 light text-center">
+		Ajouter un event
+		{{ eventType }}
+	</h5>
+</div>
+<div class="row">
+	<div class="col m8 offset-m2">
+		{{ form_start(form, { 'attr': {'class': 'container'}}) }}
+		{{ form_widget(form) }}
+		<div>
+			<button type="submit" class="btn btn-primary pull-right">Save</button>
+		</div>
+		{{ form_end(form) }}
+	</div>
+</div>
 {% endblock %}
