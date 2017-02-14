@@ -26,6 +26,10 @@
 				<li><a href="{{ path('home') }}">Homepage</a></li>
 			</ul>
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<ul class="brand-logo center">
+				<li><a href="{{ path('home_type' , {'type': 'BDE'})}}">BDE</a></li>
+				<li><a href="{{ path('home_type' , {'type': 'BDS'})}}">BDS</a></li>
+			</ul>
 			{% else %}
 			<ul class="right hide-on-med-and-down">
 				<li><a href="{{ path('register') }}">Sign up</a></li>
@@ -59,6 +63,7 @@
 	</nav>
 	{% block body %}
 	{% endblock %}
+	
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript"
@@ -69,7 +74,9 @@
 		src="{{ asset('framework/js/datepicker.js') }}"></script>
 	{% block javascripts %}
 	{% endblock %}
+	
 </body>
+
 </html>
 
 
