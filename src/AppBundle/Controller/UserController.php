@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
 use AppBundle\Forms\UserType;
 
+/**
+ * @Route("/user")
+ */
 class UserController extends Controller {
 	/**
 	 * @Route("/register", name="register")
@@ -46,7 +49,7 @@ class UserController extends Controller {
 	}
 	
 	/**
-	 * @Route("/profile/{mail}", name="profile_show")
+	 * @Route("/show/{mail}", name="profile_show")
 	 */
 	public function ShowProfileAction($mail) {
 		if ($this->container->get ( 'security.authorization_checker' )->isGranted ( 'IS_AUTHENTICATED_FULLY' )) {

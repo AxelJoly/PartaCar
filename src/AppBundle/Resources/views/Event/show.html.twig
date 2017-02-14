@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="section no-pad-bot">
+	<div class="container">
+		<br> <br>
+		<h1 class="header center teal-text text-lighten-2">
+			PartaCar -
+			{{ typeEvent }}
+		</h1>
+		<div class="row center">
+			<h5 class="header col s12 light">
+				Bienvenue
+				{{ user.pseudo }}
+				!
+			</h5>
+		</div>
+		{% if (is_granted('ROLE_BDE') or is_granted('ROLE_BDS')) %}
+		<div>
+			<a class='btn ButtonDrop' href="{{ path('event_add' , {'type': typeEvent})}}"
+				data-activates='dropdown1'>Ajouter un event</a>
+		</div>
+		<br><br>
+		{% endif %}
+		{% for item in event %}
+		<div class="col s12 m8 offset-m2 l6 offset-l3">
+			<div class="card-panel grey lighten-5 z-depth-1">
+				<div class="row valign-wrapper">
+					<div class="col s2">
+						{{ item.date|date('Y-m-d  H:i')}}
+					</div>
+					<div class="col s2">
+						{{ item.lieu }}
+					</div>
+					<div class="col s2">
+						{{ item.description }}
+					</div>
+					<div class="col s2">
+						{{ item.responsableEvent.firstName }}
+						{{ item.responsableEvent.lastName }}
+					</div>
+					<a class='btn ButtonDrop' href='/travel/{{ item.id }}'
+						data-activates='dropdown1'>C'est parti! <i
+						class="material-icons">star</i></a>
+				</div>
+			</div>
+		</div>
+
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
+
+
+

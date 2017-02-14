@@ -21,7 +21,7 @@ class TravelController extends Controller
 {
 
     /**
-     * @Route("/", name="home")
+     * @Route("/travel", name="travel_show")
      */
     public function ShowTravelAction()
     {
@@ -30,7 +30,7 @@ class TravelController extends Controller
             $user = $this->container->get('security.token_storage')->getToken()->getUser();
         }
         $travel = $this->getDoctrine()->getRepository('AppBundle:Travel')->findAll();
-
+		
 
         return $this->render('AppBundle:Travel:travel.html.twig', array(
         		'user' => $user,
