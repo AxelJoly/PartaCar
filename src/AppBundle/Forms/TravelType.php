@@ -9,18 +9,12 @@
 namespace AppBundle\Forms;
 
 
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\City;
 use Symfony\Component\Form\AbstractType;
 use AppBundle\Entity\Travel;
-use Doctrine\ORM\EntityManager;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 
 
@@ -32,17 +26,6 @@ class TravelType extends AbstractType
     {
 
         $builder
-            ->add('date', DateTimeType::class, array(
-                'date_widget' => "single_text",
-                'time_widget' => "single_text",
-                'label' => 'Date',
-            ))
-            ->add('time', TimeType::class, array(
-                'label' => 'temps estimé',
-                'widget' => 'single_text',
-                'attr' => ['class' => 'range-field']
-
-            ))
             ->add('emptySeat', ChoiceType::class, array(
                 'label' => 'Nombre de passagers',
                 'choices' => array(
@@ -55,8 +38,8 @@ class TravelType extends AbstractType
                 },
                 'attr' => ['class' => 'browser-default']
             ))
-            ->add('description', TextType::class, array(
-            		
+            ->add('description',TextareaType::class, array(
+            		'attr' => ['id' => 'textarea' , 'class' => 'materialize-textarea', 'length' => 1000],
             ));
 
     }

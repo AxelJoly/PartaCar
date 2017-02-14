@@ -3,40 +3,58 @@
 {% block body %}
 
 
-	<div class="section no-pad-bot">
-		<div class="container">
-			<br> <br>
-			<h1 class="header center teal-text text-lighten-2">PartaCar</h1>
-			<div class="row center">
-				<h5 class="header col s12 light">Bienvenue {{ user.pseudo }}!</h5>
-			</div>
-{% for items in travel %}
-		 <div class="col s12 m8 offset-m2 l6 offset-l3">
-        <div class="card-panel grey lighten-5 z-depth-1">
-          <div class="row valign-wrapper">
-            <div class="col s2">
-
-                <a href="{{ path('profile_show', {'mail': items.driver.mail}) }}"> <img border="0" alt="No picture"  src="{{ items.driver.profilePic }}" width="70" height="70" class="circle">
-                <!-- notice the "circle" class -->
-                 </a>
-            </div>
-            <div class="col s10">
-              <span class="black-text">
-                {{ items.description }}
-              </span>
-                <a class='btn ButtonDrop' href='/travel/{{ items.id }}' data-activates='dropdown1'>C'est parti! <i class="material-icons">directions_car</i></a>
-
-			
-			</div>
-              
-            </div>
-          </div>
-        </div>
-
-    {% endfor %}
-      </div>
-				
-
-
+<div class="section no-pad-bot">
+	<div class="container">
+		<br> <br>
+		<h1 class="header center teal-text text-lighten-2">PartaCar - {{ event.nom }}</h1>
+		<div class="row center">
+			<h5 class="header col s12 light">
+				Bienvenue
+				{{ user.pseudo }}
+				!
+			</h5>
 		</div>
-	{% endblock %}
+		<div>
+			<a class='btn ButtonDrop'
+				href="{{ path('travel_add' , {'event_id': event.id})}}"
+				data-activates='dropdown1'>Ajouter un covoiturage</a>
+		</div>
+		<br><br>
+		{% for items in travels %}
+		<div class="col s12 m8 offset-m2 l6 offset-l3">
+			<div class="card-panel grey lighten-5 z-depth-1">
+				<div class="row valign-wrapper">
+					<div class="col s2">
+
+						<a href="{{ path('profile_show', {'mail': items.driver.mail}) }}">
+							<img border="0" alt="No picture"
+							src="{{ items.driver.profilePic }}" width="70" height="70"
+							class="circle"> <!-- notice the "circle" class -->
+						</a>
+					</div>
+					<div class="col s6">
+						<span class="black-text"> {{ items.description }}
+						</span>
+					</div>
+					<div class="col s2">
+						Nombre de place restante : {{ items.emptySeat }}
+					</div>
+					<div class="col s2">
+						<a class='btn ButtonDrop' href='/travel/{{ items.id }}'
+							data-activates='dropdown1'>C'est parti! <i
+							class="material-icons">directions_car</i></a>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		{% endfor %}
+	</div>
+
+
+
+</div>
+{% endblock %}

@@ -30,7 +30,10 @@
 		<div class="col s12 m8 offset-m2 l6 offset-l3">
 			<div class="card-panel grey lighten-5 z-depth-1">
 				<div class="row valign-wrapper">
-					<div class="col s2">
+				<div class="col s2">
+						<h5>{{ item.nom }}</h5>
+					</div>
+					<div class="col s1">
 						{{ item.date|date('Y-m-d  H:i')}}
 					</div>
 					<div class="col s2">
@@ -43,7 +46,7 @@
 						{{ item.responsableEvent.firstName }}
 						{{ item.responsableEvent.lastName }}
 					</div>
-					<a class='btn ButtonDrop' href='/travel/{{ item.id }}'
+					<a class='btn ButtonDrop' href="{{ path('travel_show' , {'event_id': item.id})}}"
 						data-activates='dropdown1'>C'est parti! <i
 						class="material-icons">star</i></a>
 				</div>

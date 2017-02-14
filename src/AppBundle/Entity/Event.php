@@ -20,6 +20,13 @@ class Event
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=300)
+     */
+    private $nom;
 
     /**
      * @var \DateTime
@@ -69,6 +76,30 @@ class Event
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Set nom
+     *
+     * @param String $nom
+     *
+     * @return Event
+     */
+    public function setNom($nom)
+    {
+    	$this->nom = $nom;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get nom
+     *
+     * @return String
+     */
+    public function getNom()
+    {
+    	return $this->nom;
     }
 
     /**
