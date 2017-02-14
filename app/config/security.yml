@@ -10,7 +10,9 @@ security:
                 property: mail
                         
     role_hierarchy:
-        ROLE_ADMIN: [ROLE_USER]
+        ROLE_BDE: [ROLE_USER]
+        ROLE_BDS: [ROLE_USER]
+        ROLE_ADMIN: [ROLE_BDE, ROLE_BDS]
                         
     encoders:
         AppBundle\Entity\User: bcrypt
