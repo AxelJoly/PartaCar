@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <h1 class="header center teal-text text-lighten-2">PartaCar</h1>
 <div class="row center">
@@ -33,7 +34,7 @@
 
 					<li class="collection-item dismissable"><div>
 							{{ profile.firstName }}
-							<a href="#!" class="secondary-content" title="First Name"><i
+							<a href="#!" class="secondary-content" title="Prénom"><i
 								class="material-icons prefix">perm_identity</i></a>
 						</div></li>
 
@@ -44,7 +45,7 @@
 
 					<li class="collection-item dismissable"><div>
 							{{ profile.lastName }}
-							<a href="#!" class="secondary-content" title="Last Name"><i
+							<a href="#!" class="secondary-content" title="Nom"><i
 								class="material-icons prefix">perm_identity</i></a>
 						</div></li>
 				</div>
@@ -54,7 +55,7 @@
 				<div class="input-field col s3 offset-s2">
 					<li class="collection-item dismissable"><div>
 							{{ profile.pseudo }}
-							<a href="#!" class="secondary-content" title="Nickname"> <i
+							<a href="#!" class="secondary-content" title="Pseudo"> <i
 								class="material-icons prefix">person_pin</i></a>
 						</div></li>
 
@@ -73,7 +74,7 @@
 				<div class="input-field col s3 offset-s2">
 					<li class="collection-item dismissable"><div>
 							{{ profile.phoneNumber }}
-							<a href="#!" class="secondary-content" title="Phone Number">
+							<a href="#!" class="secondary-content" title="Téléphone">
 								<i class="material-icons prefix">stay_current_portrait</i>
 							</a>
 						</div></li>
@@ -82,7 +83,7 @@
 				<div class="input-field col s3 offset-s1">
 					<li class="collection-item dismissable"><div>
 							{{ profile.school }}
-							<a href="#!" class="secondary-content" title="School"> <i
+							<a href="#!" class="secondary-content" title="Ecole"> <i
 								class="material-icons prefix">stars</i></a>
 						</div></li>
 
@@ -92,7 +93,7 @@
 				<div class="input-field col s3 offset-s2">
 					<li class="collection-item dismissable"><div>
 							{{ profile.birthdayProfile }}
-							<a href="#!" class="secondary-content" title="Birthday date">
+							<a href="#!" class="secondary-content" title="Date de naissance">
 								<i class="material-icons prefix">today</i>
 							</a>
 						</div></li>
@@ -101,7 +102,7 @@
 				<div class="input-field col s3 offset-s1">
 					<li class="collection-item dismissable"><div>
 							{{ profile.registerDateProfile }}
-							<a href="#!" class="secondary-content" title="Register Date"> <i
+							<a href="#!" class="secondary-content" title="Date d'inscription"> <i
 								class="material-icons prefix">query_builder</i></a>
 						</div></li>
 
@@ -114,7 +115,7 @@
 			<div class="row">
 				<div class="input-field col s4 offset-s4">
 					<li class="collection-item dismissable"><div>
-							<a href="#!" class="secondary-content " title="Car Type"> <i
+							<a href="#!" class="secondary-content " title="Type de voiture"> <i
 								class="material-icons prefix">directions_car</i></a>
 							{{ profile.carType }}
 
@@ -123,7 +124,7 @@
 				<div class="input-field col s4 offset-s4">
 					<li class="collection-item dismissable"><div>
 							<a href="#!" class="secondary-content"
-								title="Description of the car"> <i
+								title="Déscription de la voiture"> <i
 								class="material-icons prefix">description</i></a>
 							{{ profile.description }}
 
@@ -132,7 +133,7 @@
 			</div>
 			<div class="row">
 		
-		   <a class='btn' href='#'>Modification <i class="material-icons">mode_edit</i></a>
+		   <a class='btn waves-effect waves-light' href='#'>Modification <i class="material-icons">mode_edit</i></a>
 		
 			</div>
 		</ul>

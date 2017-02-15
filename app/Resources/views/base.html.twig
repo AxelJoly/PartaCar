@@ -23,7 +23,7 @@
 	<nav role="navigation" style="background-color: #26a69a;">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
-				<li><a href="{{ path('home') }}">Homepage</a></li>
+				<li><a href="{{ path('home') }}">Accueil</a></li>
 			</ul>
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			<ul class="brand-logo center">
@@ -32,7 +32,7 @@
 			</ul>
 			{% else %}
 			<ul class="right hide-on-med-and-down">
-				<li><a href="{{ path('register') }}">Sign up</a></li>
+				<li><a href="{{ path('register') }}">Créer un compte</a></li>
 			</ul>
 			{%  endif %}
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -41,22 +41,20 @@
 			<ul id="slide-out" class="side-nav">
 				<div class="userView">
 					<div class="background">
-						<img src="{{ asset('framework/images/background1.jpg') }}">
+						<img src="{{ asset('framework/images/fond.jpg') }}" style ="transform: translate3d(-25%, -10px, 0px);">
 					</div>
 					<img class="circle" src="{{ user.profilePic }}"> <span
 						class="white-text name">{{ user.firstName }} {{ user.lastName }}</span>
 					<span class="white-text email">{{ user.mail }}</span>
 				</div>
 				<li><a href="#!"><i
-						class="material-icons">library_add</i>Add Travel</a></li>
-				<li><a href="#!"><i class="material-icons">navigation</i>My
-						travels</a></li>
-				<li><a href="#!"><i class="material-icons">location_on</i>Search
-						travels</a></li>
+						class="material-icons">library_add</i>Ajouter un trajet</a></li>
+				<li><a href="#!"><i class="material-icons">navigation</i>Mes trajets</a></li>
+				<li><a href="#!"><i class="material-icons">location_on</i>Rechercher un trajet</a></li>
 				<li><a href="{{ path('profile_show', {'mail': user.mail}) }}"><i
-						class="material-icons">verified_user</i>My profile</a></li>
+						class="material-icons">verified_user</i>Mon profil</a></li>
 				<li><div class="divider"></div></li>
-				<li><a class="waves-effect" href="{{ path('app.logout') }}">Disconnect</a></li>
+				<li><a class="waves-effect" href="{{ path('app.logout') }}">Deconnexion</a></li>
 			</ul>
 			{% endif %}
 		</div>
@@ -70,6 +68,8 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script type="text/javascript"
 		src="{{ asset('framework/js/navbar.js') }}"></script>
+		<script type="text/javascript"
+		src="{{ asset('framework/js/parallax.js') }}"></script>
 	<script type="text/javascript"
 		src="{{ asset('framework/js/datepicker.js') }}"></script>
 	{% block javascripts %}

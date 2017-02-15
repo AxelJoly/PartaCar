@@ -1,177 +1,174 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-	
-	<div id="index-banner" class="parallax-container">
-		<div class="section no-pad-bot">
-			<div class="container transboxTest">
-				<br>
-				<h1 class="header center teal-text text-lighten-2">PartaCar</h1>
-			
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+<div id="index-banner" class="parallax-container par">
+
+
+	<div class="row">
+		<div class="col s6 offset-s3">
+			<div class="card white lighten-2 log z-depth-5">
+				<div class="card-content white-text">
+					<span class="header center teal-text text-lighten-2"><h1>PartaCar</h1></span>
+
+				</div>
 				<div class="row center">
 					<div class="row">
-						<form action="{{ path('app.login') }}" method="post" class="form-horizontal">
+						<form action="{{ path('app.login') }}" method="post"
+							class="form-horizontal">
 							{% if error %}
-								<div><h4 class="header center teal-text">{{ error.messageKey|trans(error.messageData, 'security') }}</h4></div>
-								{% endif %}
+							<div>
+								<h4 class="header center teal-text">
+									{{ error.messageKey|trans(error.messageData, 'security') }}
+								</h4>
+							</div>
+							{% endif %}
 							<div class="container">
 								<div class="row">
 									<div class="col s12 offset-s2">
 										<div class="input-field col s8	">
-											<input id="mail" type="text" class="validate" name="_username" value="{{ last_username }}"/>
-											<label for="mail">Mail</label>
+											<input id="mail" type="text" class="validate"
+												name="_username" value="{{ last_username }}" /> <label
+												for="mail">Mail</label>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col s12 offset-s2">
 										<div class="input-field col s8">
-											<input name="_password" id="password" class="validate" type="password" />
-											<label for="password">Password</label>
+											<input name="_password" id="password" class="validate"
+												type="password" /> <label for="password">Password</label>
 										</div>
 									</div>
 								</div>
-							
-								<button class="btn waves-effect waves-light" type="submit"
+
+								<div class="card-action">
+									<button class="btn waves-effect waves-light" type="submit"
 										name="action">
-									LOGIN <i class="material-icons right">send</i>
-								</button>
+										LOGIN <i class="material-icons right">send</i>
+									</button>
+								</div>
 							</div>
-
 						</form>
-
-
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-		<div class="parallax">
-			<img src="{{ asset('framework/images/background1.jpg') }}" alt="Unsplashed background img 1" style="display: block;transform: translate3d(-50%, 50px, 0px);">
-		</div>
-	</div>
-
-
-	<div class="container">
-		<div class="section">
-
-			<!--   Icon Section   -->
-			<div class="row">
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center brown-text">
-							<i class="material-icons">flash_on</i>
-						</h2>
-						<h5 class="center">Fast</h5>
-
-						<p class="light">We did most of the heavy lifting for you to
-							provide a default stylings that incorporate our custom
-							components. Additionally, we refined animations and transitions
-							to provide a smoother experience for developers.</p>
-					</div>
-				</div>
-
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center brown-text">
-							<i class="material-icons">group</i>
-						</h2>
-						<h5 class="center">Social</h5>
-
-						<p class="light">By utilizing elements and principles of
-							Material Design, we were able to create a framework that
-							incorporates components and animations that provide more feedback
-							to users. Additionally, a single underlying responsive system
-							across all platforms allow for a more unified user experience.</p>
-					</div>
-				</div>
-
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center brown-text">
-							<i class="material-icons">settings</i>
-						</h2>
-						<h5 class="center">Easy</h5>
-
-						<p class="light">We have provided detailed documentation as
-							well as specific code examples to help new users get started. We
-							are also always open to feedback and can answer any questions a
-							user may have about Materialize.</p>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 
 
-	<div class="parallax-container valign-wrapper">
-		<div class="section no-pad-bot">
-			<div class="container">
-				<div class="row center"></div>
-			</div>
-		</div>
-		<div class="parallax">
-			<img  src="{{ asset('framework/images/background2.jpg') }}" alt="Unsplashed background img 2" style="display: block; transform: translate3d(-50%, 100px, 0px);">
-		</div>
+
+	<div class="parallax">
+		<img src="{{ asset('framework/images/images1.jpg') }}"
+			alt="Unsplashed background img 1">
 	</div>
+</div>
 
-	<div class="container">
-		<div class="section">
 
-			<div class="row">
-				<div class="col s12 center">
-					<h3>
-						<i class="mdi-content-send brown-text"></i>
-					</h3>
-					<h4>Contact Us</h4>
-					<p class="left-align light">Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit. Nullam scelerisque id nunc nec
-						volutpat. Etiam pellentesque tristique arcu, non consequat magna
-						fermentum ac. Cras ut ultricies eros. Maecenas eros justo,
-						ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque,
-						posuere et pretium eget, bibendum sollicitudin lacus. Aliquam
-						eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla
-						imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum
-						ac, gravida ultrices erat. Nullam eget dignissim mauris, non
-						tristique erat. Vestibulum ante ipsum primis in faucibus orci
-						luctus et ultrices posuere cubilia Curae;</p>
+<div class="container">
+	<div class="section">
+
+		<!--   Icon Section   -->
+		<div class="row">
+			<div class="col s12 m4">
+				<div class="icon-block">
+					<h2 class="center brown-text">
+						<i class="material-icons">group</i>
+					</h2>
+					<h5 class="center">Pratique</h5>
+
+					<p class="light">Vous êtes étudiant à l'ISEN Toulon, vous avez envie d'aller
+					 à une soirée étudiante mais vous n'avez aucun moyen de locomotion car 
+					 vous n'avez pas le permis, votre est en réparation ou encore comme 
+					 c'est celle de vos parents ils l'utilisent ce jour la? 
+					Le site de covoiturage interne à l'ISEN: PartaCar est la pour vous aider!</p>
 				</div>
 			</div>
 
-		</div>
-	</div>
+			<div class="col s12 m4">
+				<div class="icon-block">
+					<h2 class="center brown-text">
+						<i class="material-icons">flash_on</i>
+					</h2>
+					<h5 class="center">Rapide</h5>
 
+					<p class="light">Un problème de dernière minute? Une decision au dernier moment sur un 
+					coup de tête ou encore une journée trop chargé? Pleins de raison qui font que le moyen de
+					 locomotion pour aller à une soirée est souvent choisi en dernier lieu. Avec PartaCar en 
+					 moins de 5 minutes vous pouvez vous inscrire sur des trajets de covoiturages proposé par des étudiants
+					  de l'ISEN avec des destinations identiques aux votres. C'est simple, rapide et vous avez
+					   directement accées à des trajets qui répondent à nos attentes</p>
+				</div>
+			</div>
 
-	<div class="parallax-container valign-wrapper">
-		<div class="section no-pad-bot">
-			<div class="container">
-				<div class="row center"></div>
+			<div class="col s12 m4">
+				<div class="icon-block">
+					<h2 class="center brown-text">
+						<i class="material-icons">settings</i>
+					</h2>
+					<h5 class="center">Efficace</h5>
+
+					<p class="light">Pas besoin de faire une recherche sur un site classique 
+					de covoiturage en essayant de tomber par chance sur quelqu'un qui fait approximativement 
+					le même trajet que pour aller a ce fameux évènement. Avec PartaCar tous les événements du
+					 BDE et du BDS seront référencé directement par les personnes de cette association pour 
+					 un maximum de fiabilité et de détails!</p>
+				</div>
 			</div>
 		</div>
-		<div class="parallax">
-			<img  src="{{ asset('framework/images/background3.jpg') }}" alt="Unsplashed background img 3" style="display: flex; transform: translate3d(-50%, 50px, 0px);">
-		</div>
+
 	</div>
-	<footer class="page-footer teal" style="margin-top:0px;">
+</div>
+
+
+<div class="parallax-container valign-wrapper par">
+	<div class="section no-pad-bot">
 		<div class="container">
-			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="white-text">Company Bio</h5>
-					<p class="grey-text text-lighten-4">We are a team of college
-						students working on this project like it's our full time job. Any
-						amount would help support and continue development on this project
-						and is greatly appreciated.</p>
-				</div>
-			</div>
+			<div class="row center"></div>
 		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				Made by <a class="brown-text text-lighten-3"
-						   href="http://materializecss.com">Materialize</a>
-			</div>
-		</div>
-	</footer>
+	</div>
+	<div class="parallax">
+		<img src="{{ asset('framework/images/images2.jpg') }}"
+			alt="Unsplashed background img 2">
+	</div>
+</div>
+
+  <footer class="page-footer" style="margin-top:0px; background-color: #26a69a;">
+          <div class="container">
+            <div class="row">
+              <div class="col l8 s12">
+                <h5 class="white-text">Site réalisé par 4 étudiants de l'ISEN Toulon</h5>
+                 
+                 <ul>
+                  <li class="grey-text text-lighten-3" href="#!">Dans le cadre d'un projet personnel soutenu par les associations:</li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/ISEN-Engineering-216912935042719/?fref=ts">- ISEN engineering</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/BDEISENToulon/?fref=ts">- BDE</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/BDS-ISEN-Toulon-1455219178107190/?fref=ts">- BDS</a></li>
+                  
+                </ul>
+              </div>
+              <div class="col l2 offset-l2 s12">
+                <h5 class="white-text">Etudiants: </h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/profile.php?id=100000931306619&fref=ts">- Axel Joly</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/benjamin.revertegat?fref=ts">- Benjamin Revertegat</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/florian.munini">- Florian Munini</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/bastien.chapuis.3?fref=ts">- Bastien Chapuis</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Réalisé entre 2016 et 2017 dans le cadre d'un projet de troisième année d'école d'ingénieur.
+              <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/PartaCar-355333998180591/?fref=ts">Pour plus d'infos suivez nous sur facebook!</a>
+           	
+            </div>
+          </div>
+        </footer>
+            
+
+
+
 {% endblock %}
 

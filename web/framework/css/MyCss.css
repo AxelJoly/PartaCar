@@ -14,19 +14,20 @@
 	float: right;
 	
 }
-.transboxTest {
-	margin-top: auto;
-	 font-weight: bold;
-    background-color: #ffffff;
-    opacity: 0.5;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
+.log {
+	margin-top: 70px;
+	margin-bottom:auto;
+	opacity: 0.85;   
 }
+
+
 
 .show {
 	display:flex;
 }
 
 .containerImg {
+	margin-top:20px;
     position: relative;
     width: 50%;
     
@@ -41,3 +42,9 @@
   backface-visibility: hidden;
 }
 
+.par {
+	height:600px;
+}
+
+
+  
