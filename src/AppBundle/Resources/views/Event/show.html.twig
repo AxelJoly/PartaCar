@@ -21,18 +21,19 @@
 		<div>
 			<a class='btn ButtonDrop'
 				href="{{ path('event_add' , {'type': typeEvent})}}"
-				data-activates='dropdown1'>Ajouter un event</a>
+				data-activates='dropdown1'><i class="material-icons">add</i> Ajouter un event</a>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 		{% endif %}
 
 		{% for item in event %}
 		<div class="col s12 m8 offset-m2 l6 offset-l3">
 			<div class="card-panel grey lighten-5 z-depth-1">
 				<div class="row valign-wrapper">
-				<div class="col s2">
-						<h5>{{ item.nom }}</h5>
+					<div class="col s2">
+						<h5>
+							{{ item.nom }}
+						</h5>
 					</div>
 					<div class="col s1">
 						{{ item.date|date('Y-m-d  H:i')}}
@@ -48,17 +49,26 @@
 						{{ item.responsableEvent.lastName }}
 					</div>
 					<div class="container">
-					{% if (is_granted('ROLE_BDE') or is_granted('ROLE_BDS')) %}
-						<div>
-							<a class='btn blue ButtonDrop '
-							   href="{{ path('event_modify' , {'type': typeEvent, 'id': item.id})}}"
-							   data-activates='dropdown1'>Modifier</a>
-						</div>
-
-					{% endif %}
-					<a class='btn ButtonDrop' href="{{ path('travel_show' , {'event_id': item.id})}}"
-						data-activates='dropdown1'>Participer</a>
-				</div>
+						{% if (is_granted('ROLE_BDE') or is_granted('ROLE_BDS')) %}
+						<a class='dropdown-button btn red ButtonDrop' href="#!"
+							data-activates='dropdown2'>Supprimer</a>
+						<ul id='dropdown2' class='dropdown-content'>
+							<p class="center-align">Confirmation</p>
+							<li class="divider"></li>
+							<li><a href="#!" class="center-align">Non</a></li>
+							<li class="divider"></li>
+							<li><a
+								href="{{ path('event_delete' , {'type': typeEvent, 'id': item.id})}}"
+								class="center-align"><i class="material-icons">report_problem</i>   Oui</a></li>
+						</ul>
+						<a class='btn blue ButtonDrop '
+							href="{{ path('event_modify' , {'type': typeEvent, 'id': item.id})}}"
+							data-activates='dropdown1'>Modifier</a>
+						{% endif %}
+						<a class='btn ButtonDrop'
+							href="{{ path('travel_show' , {'event_id': item.id})}}"
+							data-activates='dropdown1'>Participer</a>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -63,7 +63,7 @@ class Event
     private $responsableEvent;
     
     /**
-     * @ORM\OneToMany(targetEntity="Travel", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Travel", mappedBy="event", cascade={"remove"})
      */
     private $travels;
 

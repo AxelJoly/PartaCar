@@ -33,7 +33,9 @@ class EventController extends Controller {
 			$em->persist($event);
 			$em->flush();
 				
-			return $this->redirectToRoute ('home');
+			return $this->redirectToRoute('home_type', array(
+					'type' => $type
+			));
 		}
 		
 		return $this->render ( 'AppBundle:Event:add.html.twig', array (
@@ -63,7 +65,9 @@ class EventController extends Controller {
             $em->persist($event);
             $em->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('home_type', array(
+            		'type' => $type
+            ));
         }
 
         return $this->render('AppBundle:Event:modify.html.twig', array(
@@ -88,5 +92,21 @@ class EventController extends Controller {
 				'event' => $event,
 				'typeEvent' => $type 
 		) );
+	}
+	
+	/**
+	 * @Route("/event/delete/{type}/{id}", name="event_delete")
+	 * @Security("has_role('ROLE_BDE','ROLE_BDS')")
+	 */
+	public function deleteAction($type,Event $id)
+	{
+		
+		$em = $this->getDoctrine()->getManager();
+		$em->remove($id);
+		$em->flush();
+	
+		return $this->redirectToRoute('home_type', array(
+				'type' => $type
+		));
 	}
 }
