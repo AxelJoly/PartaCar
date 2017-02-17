@@ -100,6 +100,20 @@ class TravelController extends Controller
     			'user' => $user,
     	));
     }
+    
+    /**
+     * @Route("/travel/delete/{event_id}/{id}", name="travel_delete")
+     */
+    public function deleteAction($event_id,Travel $id)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$em->remove($id);
+    	$em->flush();
+    
+    	return $this->redirectToRoute('travel_show', array(
+    			'event_id' => $event_id
+    	));
+    }
 }
 
 

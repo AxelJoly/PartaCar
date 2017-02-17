@@ -6,7 +6,10 @@
 <div class="section no-pad-bot">
 	<div class="container">
 		<br> <br>
-		<h1 class="header center teal-text text-lighten-2">PartaCar - {{ event.nom }}</h1>
+		<h1 class="header center teal-text text-lighten-2">
+			PartaCar -
+			{{ event.nom }}
+		</h1>
 		<div class="row center">
 			<h5 class="header col s12 light">
 				Bienvenue
@@ -17,36 +20,56 @@
 		<div>
 			<a class='btn ButtonDrop'
 				href="{{ path('travel_add' , {'event_id': event.id})}}"
-				data-activates='dropdown1'><i class="material-icons">add</i> Ajouter un covoiturage</a>
+				data-activates='dropdown1'><i class="material-icons">add</i>
+				Ajouter un covoiturage</a>
 		</div>
-		<br><br>
-		{% for items in travels %}
+		<br>
+		<br>
+		{% for item in travels %}
 		<div class="col s12 m8 offset-m2 l6 offset-l3">
 			<div class="card-panel grey lighten-5 z-depth-1">
 				<div class="row valign-wrapper">
 					<div class="col s2">
 
-						<a href="{{ path('profile_show', {'mail': items.driver.mail}) }}">
+						<a href="{{ path('profile_show', {'mail': item.driver.mail}) }}">
 							<img border="0" alt="No picture"
-							src="{{ items.driver.profilePic }}" width="70" height="70"
+							src="{{ item.driver.profilePic }}" width="70" height="70"
 							class="circle"> <!-- notice the "circle" class -->
 						</a>
 					</div>
 					<div class="col s6">
-						<span class="black-text"> {{ items.description }}
+						<span class="black-text"> {{ item.description }}
 						</span>
 					</div>
 					<div class="col s2">
-						Nombre de place restante : {{ items.emptySeat }}
+						Nombre de place restante :
+						{{ item.emptySeat }}
 					</div>
-					<div class="col s2">
-						<a class='btn ButtonDrop' href='/travel/{{ items.id }}'
+					<div class="container">
+						{% if (is_granted('ROLE_ADMIN') or item.driver.mail == user.mail) %}
+						<a class='dropdown-button btn red ButtonDrop' href="#!"
+							data-activates='dropdown2'>Supprimer</a>
+						<ul id='dropdown2' class='dropdown-content'>
+							<p class="center-align">Confirmation</p>
+							<li class="divider"></li>
+							<li><a href="#!" class="center-align">Non</a></li>
+							<li class="divider"></li>
+							<li><a
+								href="{{ path('travel_delete' , {'event_id': event.id, 'id': item.id})}}"
+								class="center-align"><i class="material-icons">report_problem</i>
+									Oui</a></li>
+						</ul>
+						{% else %}
+						<a class='btn ButtonDrop' href='#!'
 							data-activates='dropdown1'>C'est parti! <i
 							class="material-icons">directions_car</i></a>
-
-
+						{% endif %}
+						{%  if is_granted('ROLE_ADMIN') %}
+						<a class='btn ButtonDrop' href='#!'
+							data-activates='dropdown1'>C'est parti! <i
+							class="material-icons">directions_car</i></a>
+						{% endif %}
 					</div>
-
 				</div>
 			</div>
 		</div>
