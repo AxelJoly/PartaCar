@@ -37,6 +37,12 @@
 							class="circle"> <!-- notice the "circle" class -->
 						</a>
 					</div>
+					<div class="col s2">
+					<a href="{{ path('profile_show' , {'mail': item.driver.mail}) }}" class="center-align">
+						{{ item.driver.firstName }}
+						{{ item.driver.lastName }}
+					</a>
+					</div>
 					<div class="col s6">
 						<span class="black-text"> {{ item.description }}
 						</span>

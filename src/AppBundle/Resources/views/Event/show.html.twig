@@ -32,7 +32,6 @@
 				<div class="row valign-wrapper">
 					<div class="col s2">
 						<h5>
-						{{ item.id }}
 							{{ item.nom }}
 						</h5>
 					</div>
@@ -46,8 +45,10 @@
 						{{ item.description }}
 					</div>
 					<div class="col s2">
+					<a href="{{ path('profile_show' , {'mail': item.responsableEvent.mail}) }}" class="center-align">
 						{{ item.responsableEvent.firstName }}
 						{{ item.responsableEvent.lastName }}
+					</a>
 					</div>
 					<div class="container">
 						{% if (is_granted('ROLE_BDE') or is_granted('ROLE_BDS')) %}
@@ -59,7 +60,7 @@
 							<li><a href="#!" class="center-align">Non</a></li>
 							<li class="divider"></li>
 							<li><a
-								href="{{ path('event_delete' , {'type': typeEvent, 'id': item.id})}}"
+								href="{{ path('event_delete' , {'type': typeEvent, 'id': item.id}) }}"
 								class="center-align"><i class="material-icons">report_problem</i>   Oui</a></li>
 						</ul>
 						<a class='btn blue ButtonDrop '
