@@ -22,7 +22,7 @@
 <body>
 	<nav role="navigation" style="background-color: #26a69a;">
 		<div class="nav-wrapper container">
-			<ul class="right hide-on-med-and-down">
+			<ul class="right">
 				<li><a href="{{ path('home') }}">Accueil</a></li>
 			</ul>
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -31,7 +31,7 @@
 				<li><a href="{{ path('home_type' , {'type': 'BDS'})}}">BDS</a></li>
 			</ul>
 			{% else %}
-			<ul class="right hide-on-med-and-down">
+			<ul class="right ">
 				<li><a href="{{ path('register') }}">Créer un compte</a></li>
 			</ul>
 			{%  endif %}

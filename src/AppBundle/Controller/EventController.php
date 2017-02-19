@@ -100,11 +100,12 @@ class EventController extends Controller {
 	 */
 	public function deleteAction($type,Event $id)
 	{
-		
+        $event = $this->getDoctrine ()->getRepository ( 'AppBundle:Event' )->find($id);
+        dump($event);
 		$em = $this->getDoctrine()->getManager();
-		$em->remove($id);
+		$em->remove($event);
 		$em->flush();
-	
+
 		return $this->redirectToRoute('home_type', array(
 				'type' => $type
 		));
