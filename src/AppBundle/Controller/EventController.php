@@ -98,7 +98,7 @@ class EventController extends Controller {
 	 * @Route("/event/delete/{type}/{id}", name="event_delete")
 	 * @Security("has_role('ROLE_BDE','ROLE_BDS')")
 	 */
-	public function deleteAction($type,Event $id)
+	public function deleteAction($type, $id)
 	{
         $event = $this->getDoctrine ()->getRepository ( 'AppBundle:Event' )->find($id);
 		$em = $this->getDoctrine()->getManager();
