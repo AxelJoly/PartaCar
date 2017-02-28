@@ -53,8 +53,8 @@
 					<div class="container">
 						{% if (is_granted('ROLE_BDE') or is_granted('ROLE_BDS')) %}
 						<a class='dropdown-button btn red ButtonDrop' href="#!"
-							data-activates='dropdown2'>Supprimer</a>
-						<ul id='dropdown2' class='dropdown-content'>
+							data-activates='dropdown2-{{ item.id }}'>Supprimer</a>
+						<ul id='dropdown2-{{ item.id }}' class='dropdown-content'>
 							<p class="center-align">Confirmation</p>
 							<li class="divider"></li>
 							<li><a href="#!" class="center-align">Non</a></li>
