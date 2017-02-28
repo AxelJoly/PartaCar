@@ -106,8 +106,9 @@ class TravelController extends Controller
      */
     public function deleteAction($event_id,Travel $id)
     {
+    	$travel = $this->getDoctrine()->getRepository( 'AppBundle:Travel' )->find($id);
     	$em = $this->getDoctrine()->getManager();
-    	$em->remove($id);
+    	$em->remove($travel);
     	$em->flush();
     
     	return $this->redirectToRoute('travel_show', array(
