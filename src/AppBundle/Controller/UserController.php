@@ -39,7 +39,22 @@ class UserController extends Controller {
 			$em = $this->getDoctrine ()->getManager ();
 			$em->persist ( $user );
 			$em->flush ();
-			
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Validation inscription')
+                ->setFrom(array('isen.partacar@gmail.com' => 'PartaCar'))
+                ->setTo('joly.axel@outlook.fr')
+                ->setBody(
+                    $this->renderView(
+                        'AppBundle:Email:simpleMail.html.twig',
+                        array()
+
+                    )
+                )
+            ;
+
+            $this->get('mailer')->send($message);
+
 			return $this->redirectToRoute ( 'home' );
 		}
 		
