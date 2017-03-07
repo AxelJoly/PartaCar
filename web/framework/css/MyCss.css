@@ -15,7 +15,7 @@
 	
 }
 .log {
-	margin-top: 70px;
+	margin-top: 60px;
 	margin-bottom:auto;
 	opacity: 0.85;   
 }
@@ -46,5 +46,6 @@
 	height:600px;
 }
 
-
-  
+#errorM {
+	margin-top:-40px;
+}
