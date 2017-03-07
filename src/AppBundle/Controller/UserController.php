@@ -40,16 +40,18 @@ class UserController extends Controller {
 			$em->persist ( $user );
 			$em->flush ();
 
+			//Envoie du message de confirmation d'inscription
             $message = \Swift_Message::newInstance()
                 ->setSubject('Validation inscription')
-                ->setFrom(array('isen.partacar@gmail.com' => 'PartaCar'))
-                ->setTo('joly.axel@outlook.fr')
+                ->setFrom('isen.partacar@gmail.com')
+                ->setTo($user->getMail())
                 ->setBody(
                     $this->renderView(
                         'AppBundle:Email:simpleMail.html.twig',
                         array()
 
-                    )
+                    ),
+            'text/html'
                 )
             ;
 
