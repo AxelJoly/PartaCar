@@ -43,12 +43,12 @@ class UserController extends Controller {
 			//Envoie du message de confirmation d'inscription
             $message = \Swift_Message::newInstance()
                 ->setSubject('Validation inscription')
-                ->setFrom('isen.partacar@gmail.com')
+                ->setFrom(array('isen.partacar@gmail.com' => 'PartaCar'))
                 ->setTo($user->getMail())
                 ->setBody(
                     $this->renderView(
                         'AppBundle:Email:simpleMail.html.twig',
-                        array()
+                        array('user' => $user)
 
                     ),
             'text/html'
